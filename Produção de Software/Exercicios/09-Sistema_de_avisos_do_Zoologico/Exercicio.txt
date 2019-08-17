@@ -1,0 +1,30 @@
+Este exercício constitui na implementação de um sistema de avisos para um zoológico. O sistema implementado é baseado na classe Animal, que é constituída de:
+
+nome (string): string representando o nome do animal.
+peso (unsigned int): inteiro representando o peso do animal.
+dataPesagem (unsigned int): inteiro representando a data da última pesagem.
+set/getNome(): respectivamente modifica e retorna o nome do animal.
+set/getPesos(): respectivamente modifica o peso do animal (e a data de pesagem) e retorna o peso atual.
+getTempoPesagem(int hoje): retorna o tempo desde a última pesagem.
+Esses contratos já estão definidos no arquivo Animal.hpp, que podem ser visto aqui caso queira testar localmente (Animal.hpp).
+
+*Atenção, o arquivo hpp se chama Animal.hpp*
+
+Sua tarefa é modificar os arquivos .cpp fornecidos, implementando os métodos descritos. Além disso, seu programa deverá informar quando um animal ficou mais de duas semanas sem ser pesado ou quando ele teve uma queda brusca (+10%) de peso. Seu programa deverá imprimir as respectivas mensagens quando apropriado:
+
+Semana X: Aviso! Animal X perdeu 10% ou mais de seu peso.
+Semana X: Aviso! Animal X nao foi pesado por X semanas.
+As mensagens devem ser impressas por semana registrada e as referentes à perda de peso sempre devem preceder às de ausência de pesagem. No caso de mais de uma mensagem do mesmo tipo na mesma semana (por exemplo animais A e B que ambos perderam peso) elas devem ser impressas em ordem alfabética (primeira a mensagem do animal A, depois a do animal B). Além disso, podem existir tanto semanas não cadastradas (da semana 4 o próximo registro é na semana 7) e semanas sem nenhuma pesagem. No primeiro caso, você deve ignorar os avisos referentes à semanas faltantes. No segundo, você deve imprimir os avisos normalmente.
+
+Seu programa receberá como entradas um conjunto de instruções a serem realizadas, seguidas dos respectivos valores. No total existem 2 instruções:
+
+S (Semana), indica o início de uma semana, que então é acompanhado de um inteiro indicando qual a semana atual.
+P (Pesagem), indica a pesagem de um animal, que então é acompanhada de um string e um inteiro com os respectivos nome e peso do animal.
+Segue um exemplo de entrada e saída esperado:
+
+Exemplo de entrada/saida para Lab02ex02
+
+foto1
+
+Note que nem todos os animais podem estar presentes na primeira semana como é o caso do Leao03! Ao realizar uma pesagem, você deve sempre verificar se este é um novo animal e criar um novo cadastro se necessário. 
+*Dica: utilizar std::map associando o nome de um animal com seus dados pode ajudar na tarefa de verificar se um animal já existe e cadastra-lo caso contrário*

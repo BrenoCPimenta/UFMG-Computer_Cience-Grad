@@ -1,0 +1,30 @@
+Joffrey Baratheon é um personagem fictício da série televisiva e de livros Game of Thrones. Esse personagem é filho de Robert, da Casa "Baratheon", e Cersei, da Casa "Lannister". Como tal, ele é o primeiro da Casa de "Baratheon de King's Landing", que surge da união de ambas as Casas.
+
+Cada uma das grandes Casas tem seu próprio lema, ou "palavras" (Words). Estes geralmente tomam a forma de ostentações ou ameaças comummente usadas como gritos de guerra, como as palavras da casa Baratheon "Ours is the fury!". Todavia, os Lannister são um caso incomum em que seu lema não oficial é usado muito mais frequentemente na narrativa dos livros do que seu lema oficial. Seu lema oficial é na verdade "Hear Me Roar!" - mas isso quase nunca é usado, mesmo dentro dos livros. Geralmente é levantado apenas para os personagens mostrarem que não é tão popular quanto seu lema não oficial: "A Lannister always pays his debts.".
+
+Dessa forma, a casa de "Baratheon de King's Landing"possui dois lemas. Um oficial herdado de sua linhagem Baratheon e um não-oficial herdado de sua linhagem Lannister. Além disso, como todas as três são grandes casas, todas são soberanas. 
+
+Este é um clássico exemplo do "problema diamante", frequentemente presente ao se tratar de heranças múltiplas. O "problema diamante" é uma ambiguidade que surge quando duas classes B e C herdam de A, e a classe D herda de B e C. Se houver um método em A que B e C substituíram, e D não sobrescreve, então qual versão do método é herdada por D: a de B, ou a de C?
+
+
+
+Resultado de imagem para diamond problem (ver imagem)
+
+
+O código fornecido para este exercício já apresenta os métodos necessários. Sua tarefa é modificar o arquivo "houses.hpp" de tal forma que as heranças entre classes sejam corretamente representadas. A saída esperada do programa é:
+
+Character name: Joffrey Baratheon
+House status: Sovereign.
+Common motto: A Lannister always pays his debts.
+Words: Ours is the fury!
+
+Character name: Cersei Lannister
+House status: Sovereign.
+Common motto: A Lannister always pays his debts.
+Words: Hear Me Roar!
+
+Character name: Robert Baratheon
+House status: Sovereign.
+Words: Ours is the fury!
+
+*Dica: a solução desta atividade requer a modificação/adição de apenas cinco linhas de código.*

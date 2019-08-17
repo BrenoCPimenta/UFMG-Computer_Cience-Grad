@@ -1,0 +1,21 @@
+O objetivo desse problema é praticar a leitura de vários valores de entrada e a utilização de arquivos.
+
+Escreva um programa que lê um valor de entrada do tipo string. Esse valor representa o nome de um arquivo que contém uma lista de números inteiros (no máximo 20). Seu programa deve abrir o arquivo e imprimir os números no console em duas listas separadas, primeiro os números pares e depois os ímpares. Por exemplo:
+
+Entrada: teste.txt
+
+Saída: (considerando um arquivo com a seguinte lista: 1 2 4 6 5 7 8 9 10)
+
+2 4 6 8 10
+
+1 5 7 9
+
+
+
+Referências:
+
+https://www.tutorialspoint.com/cplusplus/cpp_files_streams.htm
+
+http://www.cplusplus.com/doc/tutorial/files/
+
+https://www.uow.edu.au/~lukes/TEXTBOOK/notes-cpp/io/readtextfile.html

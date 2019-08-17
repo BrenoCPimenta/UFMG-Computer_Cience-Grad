@@ -1,0 +1,205 @@
+/*
+ESSA SOLUÇÂO É DE UM BOM AMIGO: LECIO CHARLES
+*/
+
+
+#include "Piece.hpp"
+#include <iostream>
+#include <string>
+#include <vector>
+
+/* funcao auxiliar para todas as pecas */
+bool ordenar_lista(std::string& a, std::string& b)
+{
+	if(a[0] == b[0])
+		return a[1] < b[1];
+	else
+		return a[0] < b[0];
+}
+
+/* base */
+
+Piece::Piece(std::string simboloPeca, std::string posAtual, std::string proxPos)
+: _posAtual(posAtual), _proxPos(proxPos), _conseguiu_mover(false)
+{
+	switch( *simboloPeca.c_str() )
+	{
+		case 'B' :
+			_nomePeca = "Bishop";
+			break;
+		case 'N' :
+			_nomePeca = "Knight";
+			break;
+		case 'R' :
+			_nomePeca = "Rook";
+			break;
+		default:
+			std::cout<<"peca desconhecida"<<std::endl;
+	}
+}
+
+void Piece::setNextPosition(std::string proxPos)
+{
+	this->_proxPos = proxPos;
+}
+void Piece::checkMovement() /* definitivamente move a peca */
+{
+	if(_conseguiu_mover)
+	{
+		std::cout<< "Moving from ("<<_posAtual<<") to ("<<_proxPos<<")"<<std::endl;
+		_posAtual = _proxPos;
+	}
+	else
+	{
+		std::cout<< "I cannot move from ("<<_posAtual<< ") to ("<<_proxPos<<")"<<std::endl;
+	}
+}
+void Piece::setMovements(){;}
+
+void Piece::printPossibleMoves()
+{
+	std::cout<<"("<<_nomePeca<<") Current Position: ("<<_posAtual<<")\nI have ";
+	std::cout<<_possiveisMovimentos.size() <<" legal movements."<<std::endl;
+
+	std::list<std::string>::iterator it = _possiveisMovimentos.begin();
+	for(it = it; it != _possiveisMovimentos.end(); it++)
+		std::cout<<"("<<_posAtual<<")->("<<*it<<")"<<std::endl;
+
+	_possiveisMovimentos.clear(); /* limpar para usa-la com outras entradas da mesma peca */
+}
+
+
+/* derivadas */
+
+Rook::Rook(std::string simboloPeca, std::string posAtual, std::string proxPos)
+: Piece(simboloPeca, posAtual, proxPos) {}
+
+void Rook::setMovements() /* torre */
+{
+/* nota: unica peca que move para a posicao atual de forma legal, segundo a saida esperada */
+
+	if( (_posAtual[0] == _proxPos[0]) || (_posAtual[1] == _proxPos[1]) )
+		_conseguiu_mover = true;
+	else
+		_conseguiu_mover = false;
+
+	std::string posAux = _posAtual;
+	for(char i = 'a'; i <= 'h'; i++)
+	{
+		if(i == _posAtual[0]) continue; // evitar elemento duplicado
+		posAux[0] = i;
+		_possiveisMovimentos.push_back(posAux);
+	}
+
+	posAux = _posAtual;
+	for(char i = '1'; i <= '8'; i++)
+	{
+		if(i == _posAtual[0]) continue;/* correcao para evitar movimento para posicao corrente*/
+		posAux[1] = i;
+		_possiveisMovimentos.push_back(posAux);
+	}
+
+	_possiveisMovimentos.sort(ordenar_lista);
+}
+
+
+Bishop::Bishop(std::string simboloPeca, std::string posAtual, std::string proxPos)
+: Piece(simboloPeca, posAtual, proxPos) {}
+
+void Bishop::setMovements() /* bispo */
+{
+	/* anda nas diagonais igual a torre anda nas linhas e colunas */
+	char x, y;
+	x = _posAtual[0];
+	y = _posAtual[1];
+
+	std::string posAux = _posAtual;
+	for(char i = x+1, j = y+1; (i <= 'h') && (j <= '8'); i++, j++)
+	{
+		posAux[0] = i;
+		posAux[1] = j;
+		_possiveisMovimentos.push_back(posAux);
+	}
+	for(char i = x-1, j = y-1; (i >= 'a') && (j >= '1'); i--, j--)
+	{
+		posAux[0] = i;
+		posAux[1] = j;
+		_possiveisMovimentos.push_back(posAux);
+	}
+	for(char i = x-1, j = y+1; (i >= 'a') && (j <= '8'); i--, j++)
+	{
+		posAux[0] = i;
+		posAux[1] = j;
+		_possiveisMovimentos.push_back(posAux);
+	}
+	for(char i = x+1, j = y-1; (i <= 'h') && (j >= '1'); i++, j--)
+	{
+		posAux[0] = i;
+		posAux[1] = j;
+		_possiveisMovimentos.push_back(posAux);
+	}
+
+	_conseguiu_mover = false;
+	std::list<std::string>::iterator it = _possiveisMovimentos.begin();
+	for(it = it; it != _possiveisMovimentos.end(); it++)
+		if((*it) == _proxPos)
+		{
+			_conseguiu_mover = true;
+			break;
+		}
+
+	_possiveisMovimentos.sort(ordenar_lista);
+}
+
+Knight::Knight(std::string simboloPeca, std::string posAtual, std::string proxPos)
+: Piece(simboloPeca, posAtual, proxPos) {}
+
+bool remove_fora_do_intervalo (const std::string s)   /* elimina elementos fora dos limites */
+{ return ( s[0] > 'h' || s[0] < 'a' || s[1] > '8' || s[1] < '1'); }
+
+void Knight::setMovements() /* cavalo */
+{
+	char x, y;
+	x = _posAtual[0];
+	y = _posAtual[1];
+
+	std::string posAux = _posAtual;
+	std::list<std::string> posicoesAux; /* posicoes candidatas aux */
+
+	for(int i = -2; i <= 2; i++) /* atribui todas as possibilidades e depois elimina */
+	{							 /* as que nao pertencem aos limites 				 */
+		posAux[0] = x + i;
+		if( i == 0)	continue;
+
+		if( abs(i) == 2 )
+		{
+			posAux[1] = y + 1;
+			posicoesAux.push_back(posAux);
+			posAux[1] = y - 1;
+			posicoesAux.push_back(posAux);
+		}
+		else
+		{
+			posAux[1] = y + 2;
+			posicoesAux.push_back(posAux);
+			posAux[1] = y - 2;
+			posicoesAux.push_back(posAux);
+		}
+	}
+
+	posicoesAux.remove_if(remove_fora_do_intervalo);
+
+	_conseguiu_mover = false;
+
+	std::list<std::string>::iterator it = posicoesAux.begin();
+	for(it = it; it != posicoesAux.end(); it++)
+		if( (*it) == _proxPos)
+		{
+			_conseguiu_mover = true;
+			break;
+		}
+
+	_possiveisMovimentos = posicoesAux;
+
+	_possiveisMovimentos.sort(ordenar_lista);
+}

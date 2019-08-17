@@ -1,0 +1,30 @@
+Considere que você tem vários processos que devem ser executados em seu computador. De maneira simples, um escalonador de processos é um subsistema do sistema operacional responsável por determinar o momento em que cada processo terá controle da CPU para realizar sua execução. 
+
+Simplificando, a forma como esses escalonadores funcionam é baseada em algoritmos de escalonamento, sendo os mesmos de extrema importância para a computação. Nesse TP iremos explorar de maneira simplificada o algoritmo de Round-Robin. Antes de falar sobre o Round-Robin, o TAD Task (Tarefa) foi definido com as seguintes propriedades:
+
+id (int): Identificador único da tarefa.
+arrival (int): Tempo no qual o processo foi recebido pela CPU.
+duration (int): Tempo de duração do processo.
+end (int): Tempo no qual o processo foi finalizado.
+inQueue (bool): Identifica se o processo já está na lista de processos em execução ou não.
+
+O algoritmo de Round-Robin funciona baseado em uma alternância circular. Essa alternância se dá baseada no tempo de Quantum atribuída ao escalonador. Quantum é um intervalo de tempo contínuo que cada processo tem para executar uma determinada tarefa. Se ao final do tempo de Quantum o processo ainda estiver em andamento e a lista de processos contenha processos diferentes do processo em andamento haverá uma interrupção temporária do processo vigente para que outro processo na lista assuma o controle da CPU e comece a sua execução. O processo interrompido vai para o final da fila de execução caso ainda não tenha sido finalizado.
+
+Dada essa definição de como funciona um algoritmo Round-Robin, sua tarefa é o implementar. Seu programa receberá como entradas o valor de quantum e o número de processos.  As entradas seguintes serão os processos, sendo os parâmetros na seguinte ordem: id, arrival, duration. Como saída, seu programa deve mostrar a seguinte string:
+
+Task {id_da_task}, Duration: [{tempo_inicio}, {tempo_fim}]
+
+para todos os processos de forma ordenada crescentemente por id do processo. Veja a Figura abaixo para exemplos:
+
+Ver foto
+
+
+
+ATENÇÃO:
+
+O critério de desempate para processos com mesmo tempo de chegada (arrival) é feito pelo seu id de forma crescente (menor id == maior prioridade).
+A implementação do TAD é uma SUGESTÃO de como resolver o problema. Caso seja de interesse do aluno outras estruturas STL podem ser usadas, desde que siga a conformação do TAD. Evite usar estruturas de tamanho fixo, dando preferência a estruturas da própria STL.  
+Mais sobre Round-Robin: 
+https://en.wikipedia.org/wiki/Round-robin_scheduling
+
+https://tutorialwing.com/round-robin-scheduling-algorithm-with-example/

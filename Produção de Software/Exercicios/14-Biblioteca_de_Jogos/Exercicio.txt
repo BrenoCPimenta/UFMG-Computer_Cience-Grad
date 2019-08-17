@@ -1,0 +1,35 @@
+O objetivo desta atividade é praticar os conceitos vistos sobre o princípio de substituição de Liskov.  O princípio define que os objetos de uma superclasse devem ser substituíveis por objetos de suas subclasses sem quebrar a aplicação. Isso requer que os objetos de suas subclasses se comportem da mesma maneira que os objetos de sua superclasse. 
+
+O problema consiste na implementação de uma biblioteca genérica de jogos. Queremos armazenar alguns jogos que possuímos e dados relevantes sobre seu gênero. Desejamos também poder identificar quais características estão presentes no gênero deste jogo. Seu programa irá receber como entrada um conjunto de cinco jogos e quais gêneros eles pertencem. Ao final, ele deverá imprimir o nome de cada jogo seguido apenas das características que fazem este jogo pertencer ao gênero descrito. A Tabela a seguir sumariza as características presentes em cada gênero.
+
+Descrição das caracteristicas de cada genero para a atividade Lab03Ex03
+
+tabela_generos.png (ver imagem)
+
+
+Você não deve imprimir todas as características presentes na tabela, apenas aquelas que são relevantes para o gênero descrito. Ou seja, para a entrada:
+
+
+Starcraft
+RTS
+Mario
+Platform
+
+
+A saída esperada é:
+
+
+Starcraft
+Habilidade RaciocinioLogico
+TempoReal Sim
+Mario
+Habilidade HabilidadeMotora
+Perspectiva Terceira
+TempoReal Sim
+
+O arquivo main.cpp já foi fornecido e pode ser encontrado aqui. Os arquivos auxiliares podem ser vistos aqui. Você deverá apenas implementar os arquivos jogos.cpp/hpp, descrevendo as classes e as transações necessárias para executar o programa. Em particular, você deverá implementar:
+
+A classe jogo, que define o arcabouço básico de um jogo.
+As classes para cada um dos gêneros descritos (jogoAction, jogoFPS, etc). A classe jogo deve ser uma superclasse (seja herdando diretamente ou em mais níveis) de todas elas para que o princípio de substituição de Liskov possa ser empregado.
+Os criadores de todas as classes recebem como parâmetro apenas o nome do jogo.
+*Dica: Lembre-se que ao empregar herança, o construtor da classe pai é chamado antes do construtor da classe atual. Note também que existem subgêneros na tabela, como é o caso de Action e FPS (FPS contêm todas as características de Action e mais algumas). Além disso, todos os gêneros são tipos de Jogos.*
