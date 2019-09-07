@@ -1,0 +1,264 @@
+%%% Template originaly created by Karol Kozioł and ShareLaTeX and modified by Breno Pimenta
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\renewcommand\familydefault{\sfdefault}
+\usepackage{tgheros}
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+left=25mm,right=25mm,%
+bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+\linespread{1.3}
+
+\newcommand{\linia}{\rule{\linewidth}{0.5pt}}
+
+% custom theorems if needed
+\newtheoremstyle{mytheor}
+    {1ex}{1ex}{\normalfont}{0pt}{\scshape}{.}{1ex}
+    {{\thmname{#1 }}{\thmnumber{#2}}{\thmnote{ (#3)}}}
+
+\theoremstyle{mytheor}
+\newtheorem{defi}{Definition}
+
+% Titulo customizado
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{center}
+\vspace{2ex}
+{\huge \textsc{\@title}}
+\vspace{1ex}
+\\
+\linia\\
+\@author \hfill \@date
+\vspace{4ex}
+\end{center}
+}
+\makeatother
+%%%
+
+% footers and headers customizados:
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+%\lfoot{Assignment \textnumero{} 1}
+\cfoot{}
+\rfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%
+
+% code listing settings
+\usepackage{graphicx,color}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{listings}
+
+
+\lstdefinelanguage{riskV}{
+  sensitive = true,
+  keywords=[1]{text, data, string},
+  keywords = [2]{la, lw, and, andi, add, addi, ecall, jal,
+  jalr, beq, bne, blt, bge, mul, sw},
+  keywords = [3]{x0, x1, x2, x3, x4, x5, x6, x7, x8, x9,
+   x10,x11, x12, x13, x14, x15, x16, x17, x18, x19, x20,
+   x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, pc},
+  keywordstyle=[1]\color{green},
+  keywordstyle=[2]\color{blue},
+  keywordstyle=[3]\bfseries,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  comment=[l]{\#},
+  %comment=[l]{//},
+  %morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+\begin{document}
+
+\title{Assignment \textnumero{} 1}
+
+\author{Breno de Castro Pimenta, RA: 2017114809}
+
+\date{06/09/2019}
+
+\maketitle
+
+\section*{Problem 1: Evens and Odds}
+
+Programa que confere se o número é par ou ímpar.\\
+Caso seja Par retorna 0.\\
+Caso seja Ímpar retorna 1.\\
+
+\begin{figure}[htb]
+\begin{small}
+\begin{lstlisting}[language=riskV]
+.data
+  input:.word 2227
+ 
+.text
+main:
+  la x6, input		#Armazenando endereco do input
+  lw x5, 0(x6)		#Armazenando valor do input
+  andi x10, x5, 1	#Buscando o bit menos significativo
+  addi a1, x10, 0	#Armazenando resposta em a1
+  addi a0, x0, 1 	#Transformando ecal na saida
+  ecall			#Imprimindo resultado
+  jal  zero, end	#Voltando para a ordem de execucao
+
+end:
+\end{lstlisting}
+\end{small}
+\end{figure} 
+
+\pagebreak
+\section*{Problem 2: Factorial}
+
+O programa retorna o fatorial de um dado número.
+
+\begin{figure}[htb]
+\begin{small}
+\begin{lstlisting}[language=riskV]
+.data
+  input:.word 4
+ 
+.text
+main:
+  addi sp, sp, -16	 #Alocando espaco na pilha.
+  sw x5, 0(sp)     	 #Salvando valores de 
+  sw x6, 4(sp)		 #registradores que serao utilizados.
+  sw x7, 8(sp)
+  sw x1, 12(sp)
+  
+  la x6, input		 #Armazenando endereco do input.
+  lw x5, 0(x6)		 #Armazenando valor do input.
+  add x10, x5, x0	 #Armazenando em x10 o input.
+  addi x7, x0, 1   	 #Colocando x7 com valor de 1.
+  
+  jal x1, FACT		 #Inicia-se o fatorial.
+  
+  addi a1, x10, 0	 #Armazenando resposta em a1.
+  addi a0, x0, 1 	 #Transformando ecal na saida.
+  ecall				 #Imprimindo resultado.
+  
+  lw x5, 0(sp)   	 #Restaurando os valores  dos
+  lw x6, 4(sp)		 #registradores utilizados.
+  lw x7, 8(sp)
+  lw x1, 12(sp)
+  addi sp,sp, 16  	 #Desalocando os espacos na pilha.
+  jal  zero, end	 #Voltando para a ordem de execucao.
+  
+FACT:
+  mul x10, x10, x7 	 #Multiplicamos x7 pelo resultado.
+  addi x7, x7, 1	 #Aumentamos o x7.
+  blt x7, x5, FACT 	 #Se x7>=x5 paramos a conta.
+  jalr x0, 0(x1)	 #Volta para a main.
+  
+end:
+\end{lstlisting}
+\end{small}
+\end{figure} 
+
+
+\pagebreak
+\section*{Problem 3: Permutation}
+O programa verifica se o um vetor é a permutacao de outro.\\
+Caso seja retorna 1, caso contrario 0.
+
+
+\begin{small}
+\begin{lstlisting}[language=riskV]
+.data
+  inputVetorOrdenado: .word 1,2,3,4 	# Usuario input vetor ordenado
+  inputVetorDesordenado:.word 4,2,3,1 	# Usuario input vetor desordenado
+  inputTamanhoVetor: .word 4 		# Usuario input tamanho vetor
+    
+.text
+main: 
+  addi sp, sp, -32     #Alocando espaco na pilha
+  sw x5, 0(sp)         #Salvando valor de registrador que sera usado
+  sw x6, 4(sp)
+  sw x7, 8(sp)
+  sw x18, 12(sp)
+  sw x28, 16(sp)
+  sw x29, 20(sp)
+  sw x30, 24(sp)
+  sw x31, 28(sp)
+  
+  la x5, inputTamanhoVetor 	#Armazenando endereco do inputTamanhoVetor
+  lw x5, 0(x5)			#Armazenando valor do inputTamanhoVetor
+  la x6, inputVetorOrdenado	#Armazenando endereco do inputVetorOrd.
+  la x7, inputVetorDesordenado  #Armazenando endereco do inputVetorDesor.
+  
+  addi x28, x0, -1 		#Reinicializando x28 como -1.
+  addi x10, x0, 1 		#Inicializando x10 como 1.
+  addi x6, x6, -4 		#Vetor ordenado -1 posicao
+  beq x0, x0, comparando	#Iniciando a comparacao
+
+   
+comparando:
+  addi x28, x28, 1		#Iterando de 1 em 1
+  beq x28, x5, final		#VerificandoSeTerminou
+  addi x6, x6, 4		#Proxima posicao no vetor
+  lw x29, 0(x6)			#Valor do vetor ordenado
+  addi x30, x7, -4		#Reinicializando x30 uma posicao antes  
+  add x18, x0, x0		#Reinicializando x18 em 0.
+  beq x0, x0, comparacaoInterna
+    
+comparacaoInterna:
+  addi x30, x30, 4 		#Somando um na posicao do vetor Desordenado
+  lw x31, 0(x30)		#Valor do vetor desordenado
+  beq x31, x29 comparando 	#Compara se sao iguais
+  addi x18, x18, 1 		#Iterando 1
+  beq x18, x5, naoOrdenado	#Comparou com todo o vetor e terminou
+  bne x18, x5, comparacaoInterna 	#Continua comparando
+    
+naoOrdenado:
+  add x10, x0, x0	#Atribuindo valor zero por nao estar ordenado
+  beq x0, x0, final	#Pulando para o final
+ 	
+final:
+  addi a1, x10, 0	#Armazenando resposta em a1
+  addi a0, x0, 1 	#Transformando ecal na saida
+  ecall			#Imprimindo resultado
+  
+  lw x5, 0(sp)    	#Restaurando valor de registrador utilizado
+  lw x6, 4(sp)
+  lw x7, 8(sp)
+  lw x18, 12(sp)
+  lw x28, 16(sp)
+  lw x29, 20(sp)
+  lw x30, 24(sp)
+  lw x31, 28(sp)
+  addi sp,sp, 32     	#Desalocando espaco na pilha
+  jal  zero, end	#Voltando para a ordem de execucao
+  
+end:
+\end{lstlisting}
+\end{small}
+
+\end{document}
