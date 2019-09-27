@@ -1,13 +1,16 @@
 # Estrutura de Dados -  Árvores 
 
 #### Sumário:
-1. [Árvores](#árvores)
+* [Árvores](#árvores)
   * [Aspectos](#aspectos%3A)
   * [Caminho](#caminho%3A)
   * [Medidas](#medidas%3A)
-    * [Árvore Binária Balanceada](#árvore-binária-balanceadai%3A)
+    * [Árvore Binária Balanceada](#árvore-binária-balanceada%3A)
 
-2. [Tipos de Árvores](#tipos-de-árvores)
+* [Percorrendo Árvores](#percorrendo-árvores)
+
+* [Tipos de Árvores](#tipos-de-árvores)
+    * [Árvore de Huffman](#árvore-de-huffman)
 <br>
 
 ## Árvores
@@ -19,6 +22,26 @@
 * Nível do nó raíz é 0.
 * Nós que não possuem filhos são chamados de folhas.
 * **Árvore Binária: Máximo dois filhos.**
+
+### Operações:
+* Criar árvore
+* Inserção
+* Retirada
+* Pesquisa
+* Caminhamento
+* Impressão
+
+#### Soma e operações com valores da árvore:
+A maior parte das operações que se realiza com valores dos nós de uma árvore como função, são baseados no algoritmo/função de soma:
+
+~~~
+int soma(Ponteiro nó){
+  if(no!=NULL){
+    return nó->valor + soma(no->Esquerda) + soma(no->Direita);
+  }
+  return 0;
+}
+~~~
 
 ### Caminho:
 * Ordem de seus filhos pode ou não ser significativa.
@@ -50,8 +73,44 @@
     * k = log(n+1) - 1 
 
 
+
 <br>
 
+## Percorrendo Árvores
+
+Algotimos para caminhar em ávores são em sua grande maioria **recursivos**.
+* **Tipos mais comuns:**
+  * Caminhamento em profundidade:
+    * Pré-odem (Pré-fixada)
+    * In-ordem (Central ou Fixada)
+    * Pós-ordem (Pós-fixada)
+  * Caminhamento por nível.
+
+#### Pré-Ordem:
+A cada nó que passa imprime: Prioriza indo para o lado esquerdo,<br>
+caso não tenha mais nós no lado esquerdo ele volta de um em um procurando algum nó que já passou com um filho à direita,<br>
+caso ache ele pula para esse nó, o imprime e testa novamente a esquerda e só se não consegui volta a tentar a direita.**Imprimi-se na ida**.
+
+#### Pós-Ordem:
+Vai listando todas as sub-árvores da seguinte forma: Busca a sub-árvore á esquerda do nó, quando termina busca a sub-árvore à direita, quando termina imprime o nó pai de ambas sub-árvores.**Imprimi-se na volta**.
+
+#### In-Ordem/Central:
+Muito parecido com o anterior, a diferença é que após listar as sub-árvores á esquerda, em seguida já imprimi-se o nó pai, só então busca-se a sub-árvore à direita. **Imprime na volta e na passagem pelo pai**.
+
+#### Por nível:
+Imprimi-se os nós por nível de forma crescente e da esquerda para a direita
+
+![](Img2-PercorrendoArvores.png)
+
+
+
+
+
+
+<br>
+
+### Árvore Binária de Pesquisa
+### HEAP
 ### Árvore de Huffman:
 Usada para comprimir arquivos. 
 Utiliza de uma árvore binária para gerar novos números que representam valores, esses novos números seram menores que os representantes padrões, dessa forma o valor final de memória ocupada é menor.<br>
