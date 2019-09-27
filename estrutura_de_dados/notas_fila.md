@@ -4,7 +4,7 @@
 1. [Filas](#Filas)
 2. [Implementação de Filas com Alocação Sequencial](#implementação-de-filas-com-alocação-sequencial)
 3. [Implementação de Filas com Ponteiros](#implemetação-de-filas-por-meio-de-ponteiros)
-
+4. [Problema comumnete cobrado](#problema)
 <br>
 
 ## Filas 
@@ -36,3 +36,10 @@ Os usos mais comuns para filas é em sistemas operacionais para fila de impress�
 
 ## Implemetação de Filas por meio de ponteiros
 Vide Pilha e Lista, muito parecido e intuitivo.
+
+
+## Problema
+Possui-se apenas estruturas em pilha e busca-se implementar uma fila apenas usando os métodos das pilhas.
+O que deve-se entender é que existem dois métodos para essa implementação:
+  1. Quando empilhar possui custo barato, dessa forma a pilha possui a mesma ordem da fila, todas as vezes que enfileirar, basta realizar um empilhar, mas o desenfileirar, ha que mover todos os elementos da pilha e estoca-los em outra pilha para poder retirar o primeiro elemento.
+  2. Quando desempilhar possui custo barato, a pilha fica na ordem contrária da fila e é o oposto da regra a cima.
