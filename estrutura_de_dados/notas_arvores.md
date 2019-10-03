@@ -45,7 +45,7 @@ int soma(Ponteiro nó){
 
 ### Caminho:
 * Ordem de seus filhos pode ou não ser significativa.
-* Caminho (existe apenas um) que liga dois pontos (**Grado sem ciclos**).
+* Caminho (existe apenas um) que liga dois pontos (**Grafo sem ciclos**).
 * Nível do nó é o comprimento do caminho deste nó até o nó raiz.
 * Caso o caminho que esteja se medindo é de um nó antecedente a um nó decendente o caminho é negativo.
 
