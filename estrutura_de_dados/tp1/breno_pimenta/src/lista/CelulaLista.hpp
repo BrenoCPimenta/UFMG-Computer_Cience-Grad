@@ -1,22 +1,22 @@
 #ifndef CELULA_H
 #define CELULA_H
 
-using namespace = std;
+using namespace std;
 
-public class CelulaLista{
+class CelulaLista{
   private:
-    int _valor = NULL;
-    int _proximo = NULL;
-    int _anterior = NULL;
+    int _valor;
+    CelulaLista* _proximo;
+    CelulaLista* _anterior;
     
   public:
-    CelulaLista(int, int, int);
-    void setProximo(int);
-    void setValor(int);
-    void setAnterior(int)
+    CelulaLista(int, CelulaLista*, CelulaLista*);
+    void setProximo(CelulaLista);
+    void setValor(int&);
+    void setAnterior(CelulaLista*);
     int getValor();
-    int getProximo();
-    int getAnterior();
+    CelulaLista* getProximo();
+    CelulaLista* getAnterior();
     
-}
+};
 #endif 

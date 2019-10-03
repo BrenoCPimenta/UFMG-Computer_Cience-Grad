@@ -1,16 +1,19 @@
 #include "CelulaLista.hpp"
 
-CelulaLista::CelulaLista(int valor, int proximo, int anterior):_valor(valor), _proximo(proximo), _anterior(anterior){}
+using namespace std;
 
-void CelulaLista::setValor(valor){
+CelulaLista::CelulaLista(int valor, CelulaLista* proximo, CelulaLista* anterior):_valor(valor), _proximo(proximo)/*, _anterior(anterior)*/{}
+
+
+void CelulaLista::setValor(int &valor){
   this->_valor=valor;
 }
 
-void CelulaLista::setProximo(proximo){
-  this->_proximo = proximo;
+void CelulaLista::setProximo(CelulaLista proximo){
+  this->_proximo = &proximo;
 }
 
-void CelulaLista::serAnterior(anterior){
+void CelulaLista::setAnterior(CelulaLista *anterior){
   this->_anterior = anterior;
 }
 
@@ -18,10 +21,10 @@ int CelulaLista::getValor(){
   return this->_valor;
 }
 
-int CelulaLlista::getProximo(){
+CelulaLista* CelulaLista::getProximo(){
   return this->_proximo;
 }
 
-int CelulaLista::getAnterior(){
+CelulaLista* CelulaLista::getAnterior(){
   return this->_anterior;
 }
