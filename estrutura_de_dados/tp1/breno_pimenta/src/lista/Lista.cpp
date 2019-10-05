@@ -2,52 +2,75 @@
 
 using namespace std;
 
+Lista::Lista(){
+  CelulaEspecial* celulaCabeca = new CelulaEspecial(0);
+  this->_comeco_lista = celulaCabeca;
+  this->_tamanho = 0;
+}
 
 Lista::~Lista(){
   this->esvaziar();
+  delete _comeco_lista;
 }
 
+bool Lista::addValor(int valor/*, int camada*/){
+  CelulaEspecial* celulaObj = new CelulaEspecial(valor/*, camada*/);
+  celulaObj->setProximo(this->_final_lista);
+  
+  this->_final_lista->setAnterior(celulaObj);
+  this->_final_lista = celulaObj;
 
-bool Lista::addValor(int valor){
-  CelulaLista celulaObj = new CelulaLista(valor, this->_final_fila);
-  this->_final_fila->setAnterior(celulaObj);
-  this->_final_fila = celulaObj;
+  this->_tamanho++;
   return true;
 }
 
-
 bool Lista::removerValor(int valorRem){
-  int *aux;
-  int iterator = topo;
-  while(true){
-    if(iterator->valor == valorRem){
-      aux = interator->anterior;
-      aux->proximo = interator->proximo;
-      aux = iterator->proximo;
-      aux->anterior = iterator->anterior;
-      delete iterator;
-      return true;
-    }
-    if(iterator->proximo == NULL){
-      return false;
-    }
-    iterator = iterator->proximo;
 
+  CelulaEspecial* aux = this->_final_lista;
+
+  while(aux != this->_comeco_lista){
+    if(aux->getValor() == valorRem){
+      if(aux == this->_final_lista){
+        this->_final_lista = this->_final_lista->getProximo();
+      }else{
+        aux->getAnterior()->setProximo(aux->getProximo());
+        aux->getProximo()->setAnterior(aux->getAnterior());
+      }
+      delete aux;
+      this->_tamanho--;
+      return true;  
+    }
+    aux = aux->getProximo();
+  }
+  return false;
 }
-
+      
 bool Lista::verificarVazia(){
-	if(this->_final_lista == this->_comeco_fila){
+	if(this->_final_lista == this->_comeco_lista){
 		return true;
 	}
 	return false;
 }
-
 bool Lista::esvaziar(){
-	while(this->_final_lista != NULL){
+	while(this->_final_lista != this->_comeco_lista){
     this->_final_lista = this->_final_lista->getProximo();
     delete this->_final_lista->getAnterior();
   }
+  this->_tamanho = 0;
   return true;
 }
 
 
+int* Lista::getValores(){
+  int* valores = new int[this->_tamanho];
+  CelulaEspecial* aux = this->_final_lista;
+  for(int i=0; i< this->_tamanho; i++){
+    valores[i]= aux->getValor();
+    aux=aux->getProximo();
+  }
+  return valores;
+}
+
+int Lista::getTamanho(){
+  return this->_tamanho;
+}

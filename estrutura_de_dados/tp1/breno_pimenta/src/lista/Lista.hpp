@@ -1,24 +1,28 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include "CelulaLista.hpp"
+#include "CelulaEspecial.hpp"
 using namespace std;
 
 class Lista{
 
   private:
 
-  CelulaLista* _final_fila;
-  CelulaLista* _comeco_fila;
+  CelulaEspecial* _final_lista;
+  CelulaEspecial* _comeco_lista;
+  int _tamanho;
   
 
   public:
+  Lista();
   ~Lista();
 
-  bool addValor(int);
+  bool addValor(int/*, int*/);
   bool removerValor(int);
-  bool verficarVazia();
+  bool verificarVazia();
   bool esvaziar();
+  int* getValores();
+  int getTamanho();
 };
 
 #endif
