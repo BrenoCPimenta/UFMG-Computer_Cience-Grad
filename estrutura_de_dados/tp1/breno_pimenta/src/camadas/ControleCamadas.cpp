@@ -1,5 +1,7 @@
 #include "ControleCamadas.hpp"
 
+using namespace std;
+
 ControleCamadas::ControleCamadas(Lista* lista_base)
     :_valores_base(lista_base->getValores()), 
       _tamanho_base(lista_base->getTamanho()){};
@@ -9,7 +11,8 @@ int ControleCamadas::calcularMovimentos(int medida){
   this->_medida = medida;
   Lista* nova_camada = new Lista();
   int* valores_atuais;
-    //verificando com zero
+  
+  //verificando com zero
   if(medida == 0){
     return 0;
   }
@@ -22,15 +25,18 @@ int ControleCamadas::calcularMovimentos(int medida){
   //verificando com 1 ou mais medidas
   while(!this->verificandoMedidaEmCamada(valores_atuais, this->_tamanho_camada_atual)){
 
+    nova_camada->esvaziar();
     delete nova_camada;
     nova_camada = this->constroiProximaCamada(valores_atuais);
-   
     valores_atuais = nova_camada->getValores();
 
     this->_tamanho_camada_atual = nova_camada->getTamanho();
     this->_camada_final++;
+    if(this->_camada_final > 50) break;
   }
-  delete valores_atuais;
+  nova_camada->esvaziar();
+  delete nova_camada;
+  delete[] valores_atuais;
   return this->_camada_final;
 }  
 

@@ -11,39 +11,43 @@ int main(){
   char cmd; 
   int numb;
   int movimentos;
+  bool exitFlag = true;
+  int cnt = 0;
 
   
   Lista* lista = new Lista();
 
-  while(true){
-      
-    cin>>inNumb;
- 
-    //Condicao de parada
-    if(inNumb[0] == 'E') break;
-
-    cin>>cmd;
-
-    numb = atoi(inNumb);
-
-    if(cmd == 'i'){
-      lista->addValor(numb);
+  while(exitFlag){
+    if(!cin.good()){
+      exitFlag = false;
     }
 
-    if(cmd == 'r'){
-      lista->removerValor(numb);
-    }
 
-    if(cmd == 'p'){
-      ControleCamadas* ctl = new ControleCamadas(lista);
-      movimentos = ctl->calcularMovimentos(numb); 
-      delete ctl;
+    if(cnt != 0 && exitFlag){
       cout<<movimentos<<endl;
     }
-
+    cnt++;
+    cin>>inNumb;
+    cin>>cmd;
+    numb = atoi(inNumb);
+    if(cmd == 'i'){
+      lista->addValor(numb);
+      cnt = 0;
+    }
+    if(cmd == 'r'){
+      lista->removerValor(numb);
+      cnt = 0;
+    }
+    if(exitFlag){
+      if(cmd == 'p'){
+        ControleCamadas* ctl = new ControleCamadas(lista);
+        movimentos = ctl->calcularMovimentos(numb); 
+        delete ctl;
+      }
+    }
   }
 
+  lista->esvaziar();
   delete lista;
-
   return 0;
 }

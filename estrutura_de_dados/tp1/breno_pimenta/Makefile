@@ -48,17 +48,20 @@ test: $(EXEC)
 
 #Limpando codigo pre-compilado
 clean: # remove todos os arquivos temporarios que forem gerados pela compilacao
-	rm -rf *.o main_test $(EXEC)
-
+	rm -rf *.o
+	
+#Limpando codigo pre-compilado e executáveis criados
+clean_all: # remove todos os arquivos temporarios que forem gerados pela compilacao
+	rm -rf *.o main_test $(EXEC) main_test test.result
 
 
 
 #------------------------------------------------------------------------------
 TST=./src/testes/
 
-test_code: main 
+comp_test_code: main 
 	@$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TST)Teste.cpp $(TST)main_test.cpp -o main_test
 
 #Teste do codigo
-run_test_code: test_code
+test_code: comp_test_code
 	./main_test
