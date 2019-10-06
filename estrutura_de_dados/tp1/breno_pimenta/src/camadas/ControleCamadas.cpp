@@ -1,17 +1,15 @@
 #include "ControleCamadas.hpp"
 
-#include <iostream>
-
 ControleCamadas::ControleCamadas(Lista* lista_base)
     :_valores_base(lista_base->getValores()), 
       _tamanho_base(lista_base->getTamanho()){};
+
 
 int ControleCamadas::calcularMovimentos(int medida){
   this->_medida = medida;
   Lista* nova_camada = new Lista();
   int* valores_atuais;
-
-  //verificando com zero
+    //verificando com zero
   if(medida == 0){
     return 0;
   }
@@ -23,15 +21,14 @@ int ControleCamadas::calcularMovimentos(int medida){
   
   //verificando com 1 ou mais medidas
   while(!this->verificandoMedidaEmCamada(valores_atuais, this->_tamanho_camada_atual)){
+
+    delete nova_camada;
     nova_camada = this->constroiProximaCamada(valores_atuais);
-    delete valores_atuais;
+   
     valores_atuais = nova_camada->getValores();
+
     this->_tamanho_camada_atual = nova_camada->getTamanho();
     this->_camada_final++;
-    delete nova_camada;
-    for(int i=0; i<this->_tamanho_camada_atual;i++){
-      cout<<valores_atuais[i]<<endl;
-    }
   }
   delete valores_atuais;
   return this->_camada_final;
@@ -76,11 +73,13 @@ Lista* ControleCamadas::constroiProximaCamada(int* valores_camada_anterior){
         }
       }
       //Caso soh o valor da camada anterior seja maior
-      else{
+      if(this->_valores_base[j] < this->_medida && valores_camada_anterior[i]> this-> _medida){
         novo_valor = valores_camada_anterior[i] - this->_valores_base[j];
       }
 
-      camada_em_construcao->addValor(novo_valor);
+      if(!camada_em_construcao->valorJaArmazenado(novo_valor)){
+          camada_em_construcao->addValor(novo_valor);
+      }
     }
   }
   return camada_em_construcao;

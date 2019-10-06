@@ -17,12 +17,13 @@ class Lista{
   Lista();
   ~Lista();
 
-  bool addValor(int/*, int*/);
+  bool addValor(int);
   bool removerValor(int);
   bool verificarVazia();
   bool esvaziar();
   int* getValores();
   int getTamanho();
+  bool valorJaArmazenado(int);
 };
 
 #endif

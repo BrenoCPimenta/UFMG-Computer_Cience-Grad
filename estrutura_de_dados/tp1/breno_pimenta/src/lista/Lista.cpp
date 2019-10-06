@@ -1,10 +1,13 @@
 #include "Lista.hpp"
 
+#include <iostream>
+
 using namespace std;
 
 Lista::Lista(){
   CelulaEspecial* celulaCabeca = new CelulaEspecial(0);
   this->_comeco_lista = celulaCabeca;
+  this->_final_lista = celulaCabeca;
   this->_tamanho = 0;
 }
 
@@ -13,8 +16,8 @@ Lista::~Lista(){
   delete _comeco_lista;
 }
 
-bool Lista::addValor(int valor/*, int camada*/){
-  CelulaEspecial* celulaObj = new CelulaEspecial(valor/*, camada*/);
+bool Lista::addValor(int valor){
+  CelulaEspecial* celulaObj = new CelulaEspecial(valor);
   celulaObj->setProximo(this->_final_lista);
   
   this->_final_lista->setAnterior(celulaObj);
@@ -73,4 +76,15 @@ int* Lista::getValores(){
 
 int Lista::getTamanho(){
   return this->_tamanho;
+}
+
+bool Lista::valorJaArmazenado(int valor){
+  CelulaEspecial* aux = this->_final_lista;
+  while(aux != this->_comeco_lista){
+    if(aux->getValor() == valor){
+      return true;
+    }
+    aux=aux->getProximo();
+  }
+  return false;
 }

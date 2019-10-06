@@ -80,7 +80,6 @@ TEST_CASE("Teste ControleCamadas - Caso 1 ")
 }
 
 
-
 TEST_CASE("Teste ControleCamadas - Caso 2")
 {
   Lista* lista = new Lista();
@@ -99,6 +98,22 @@ TEST_CASE("Teste ControleCamadas - Caso 2")
 }
 
 
+TEST_CASE("Teste ControleCamadas - Caso 3")
+{
+  Lista* lista = new Lista();
+  lista->addValor(1);
+  lista->addValor(2);
+  lista->addValor(3);
+  lista->addValor(35);
+  lista->addValor(22);
+  
+  ControleCamadas* ctl = new ControleCamadas(lista);
+  
+  CHECK(ctl->calcularMovimentos(54) == 3);
+  
+  delete lista;
+  delete ctl;
+}
 
 
 
