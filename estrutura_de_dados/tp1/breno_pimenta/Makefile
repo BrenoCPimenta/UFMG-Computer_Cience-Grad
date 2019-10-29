@@ -8,7 +8,7 @@ TMPOUT=tp1.testresult
 
 
 #Transformando o comando main no padrao
-all: main
+all: $(EXEC)
 
 #Caminhos reutilizaveis
 SRC=./src

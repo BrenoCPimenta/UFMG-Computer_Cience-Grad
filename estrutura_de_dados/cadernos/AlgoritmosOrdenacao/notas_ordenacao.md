@@ -145,3 +145,64 @@ E assim sucessivamente até encontrarmos um vetor final ordenado
 
 * **OBS**: Deve ser considerado quando alto custo de pior caso não pode ser tolerado. Requer espaço extra proporcional a n. Comumente adaptado para ordenação em momória secundária.
 
+
+---
+
+## HeapSort
+
+* **Funcionamento:** Constrói uma árvore binária usando o vetor. Depois torna essa árvore em uma árvore onde os pais sao maiores ou iguais aos filhos (max heap) ou seja o maior elemento da árvore vai ser a raiz. Quando terminar de ordenar, o algoritmo pega a raiz e troca de posição com o último elemento do vetor. O último elemento do vetor é então considerado ordenado. A árvore é reajustada para que o maior elemento seja a raiz e assim sucessivamente.
+
+* **Complexidade:** Ele se comporta sempre como O(n log n) qualquer que seja a entrada
+
+* Não Estável
+* Não é Adaptável
+
+
+
+
+---
+## ShellSort
+
+* **Funcionamento:** Escolhe um gap (espaço entre valores). Ou seja pega os valores em pares. 3,4,5,6,7,8: o gap é 2, então vai ser comparado 3 com 6, 4 com 7 e 5 com 8.<br>
+Compara-se normal e troca caso o elemento da esquerda seja maior. <br>
+Na próxima iteração diminui-se o gap e continua o processo assim sucessivamente.<br>
+Quando o gap é igual a 1, executa-se o algoritmo de **Inserção**. Por isso que é dito que o ShellSort é uma otimização do método de inserção.
+
+* Escolha do Gap: Sendo 'h' o gap e 's' a iteração, uma forma otimizada de calcular o gap ideal é: h(s) = 3h(s-1)+1
+* **Complexidade:** A complexidade do ShellSort é uma das perguntas em aberto em Ciência da Computação. 
+* Não é estável
+* É adaptável de certa forma
+* IN PLACE
+* **OBS** a eficiência do algoritmo depende muito da escolha do gap.
+
+   
+
+
+
+
+
+---
+# Ordenação sem comparação
+
+## CountingSort
+* **Funcionamento:** É necessário um vetor com o número de chaves até o maior número da entrada. Então percorre-se a entrada e a cada valor encontrado, usa-se esse valor como chave para o vetor e soma-se um ao valor dessa chave. Ao terminar de percorrer a entrada, percorre-se o vetor e cria-se um terceiro vetor correspondente à entrada ordenada.
+* **Complexidade:** Sendo n o numero de valores da entrada e K o maior valor da entrada, a complexidade é O(n+k). E complexidade de espaço é O(k).
+É muito rápido mas utiliza muita memória extra e é quase impossível saber qual o maior número da entrada a priori.
+
+
+## BucketSort
+* **Funcionamento:** Separa os valores em baldes menores com tamanhos pré-definidos e ordena esses baldes com algortimos tradicionais.
+* **Complexidade:** Temporal O(n²) e Espacial O(n+k).
+
+## RadixSort
+* **Funcionamento:** É um tipo de quicksort, mas que compara por bits. Ele seleciona um bit específico e separa em partições onde os valores que possui esse bit zero e onde possui 1... e nas partições sucessivas escolhe-se outro bit e assim sucessivamente até ordenar o vetor.
+
+
+
+# Ordenação externa
+
+## MapReduce
+Divide em fitas e cada fita em blocos. Ordena esses blocos e cria novas fitas com os blocos mais ordenados das primeiras fitas e assim sucessivamente.
+
+##QuickSort Externo
+Mesma lógica só que as partições são processadas uma por vez
