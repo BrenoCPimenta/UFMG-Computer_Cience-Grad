@@ -1,10 +1,18 @@
 #include "Merge.hpp"
 
+#include <iostream>
 using namespace std;
 
+
 Planeta* Merge::separando(Planeta* inicio, int tamanho){
- 
-  //Parada do separando, quando chega a apenas um número a recursividade
+  cout<<"Separando :"<<this->cnt<<endl;
+  for(int i = 0; i<tamanho;i++){
+    cout<<(inicio+i)->getTempoVisita()<<" ";
+  }
+  this->cnt++;
+  cout<<endl;
+
+  //Final do separando, quando chega a um número a recursividade
   if(tamanho  == 1){
     return inicio;
   } 
@@ -26,6 +34,14 @@ Planeta* Merge::separando(Planeta* inicio, int tamanho){
 
 
 void Merge::unindo(Planeta* inicio, int tamanho){
+  cout<<"Unindo: ";
+
+  for(int i = 0; i<tamanho;i++){
+    cout<<(inicio+i)->getTempoVisita()<<" ";
+  }
+  cout<<endl;
+
+
 
   //Inicializando memoria auxiliar
   Planeta* planetas = new Planeta[tamanho];
@@ -72,4 +88,11 @@ void Merge::unindo(Planeta* inicio, int tamanho){
   }
   //Liberando espaço da memória auxiliar
   delete[] planetas;
+
+  cout<<"Final Unindo: ";
+  for(int i = 0; i<tamanho;i++){
+    cout<<(inicio+i)->getTempoVisita()<<" ";
+  }
+  cout<<endl;
+
 }

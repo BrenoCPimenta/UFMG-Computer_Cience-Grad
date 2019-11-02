@@ -7,12 +7,12 @@ using namespace std;
 
 
 int main(){
-  int T;
+  int tempo_limite_mes_T;
   int quantidade_planetas_P;
   int tamanho_nome_planeta_x;
 
   //Lendo parametros iniciais
-  cin>>T>>quantidade_planetas_P>>tamanho_nome_planeta_x;
+  cin>>tempo_limite_mes_T>>quantidade_planetas_P>>tamanho_nome_planeta_x;
 
   //Declarando variaveis para receber dados dos planetas
   int t;
@@ -35,11 +35,6 @@ int main(){
   }
 
   //Ordenando valores
-  /*
-  int quantidade_array_planetas = quantidade_planetas_P - 1;
-  Merge mergeObj(quantidade_array_planetas);
-  mergeObj.separando(&planetas[0], &planetas[quantidade_array_planetas]);
-  */
   Merge mergeObj;
   mergeObj.separando(&planetas[0], quantidade_planetas_P);
    
@@ -53,14 +48,24 @@ int main(){
         <<endl;
   }
 
-/*
-  //conferindo e limpando
+  //Agendar
+  int quantidade_meses;
+  Agenda agendaObj(planetas, tempo_limite_mes_T, quantidade_planetas_P);
+  quantidade_meses = agendaObj.getQuantidadeMeses();
+
+  //Ordenando meses alfabeticamente
+  Planeta* inicio_mes;
+  int tamanho_mes;
+  for(int i=0; i<quantidade_meses; i++){
+    inicio_mes = agendaObj.getInicioMes(i);
+    tamanho_mes = agendaObj.getTamanhoMes(i);
+    Mes mesObj(inicio_mes, tamanho_mes);
+    mesObj.ordenarMes();
+  } 
+ 
+
+  //Limpando
   for(int i=0; i<quantidade_planetas_P; i++){
-    cout<<"Planeta "<<i<<": "
-        <<"  t:"<<planetas[i].getTempoVisita()
-        <<"  nome:"<<planetas[i].getPrimeiraLetraNome()[0]
-        <<endl; 
     planetas[i].limparNome();
   }
-*/
 }

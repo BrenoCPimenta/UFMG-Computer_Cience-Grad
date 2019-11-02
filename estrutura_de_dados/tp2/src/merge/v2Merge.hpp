@@ -6,6 +6,7 @@
 class Merge{
   private:
     void unindo(Planeta*, int);
+    int cnt =0;
 
   public:
     Planeta* separando(Planeta*, int);
