@@ -4,72 +4,58 @@
 using namespace std;
 
 
-Planeta* Merge::separando(Planeta* inicio, int tamanho){
+Merge::Merge(int quantidade_planetas){
+  this->_quantidade_planetas = quantidade_planetas;
+}
+
+
+
+
+Planeta* Merge::separando(Planeta* inicio, Planeta* ultimo){
   this->cnt++;
   cout<<"Separando: "<<this->cnt<<endl;
   
-  if(tamanho  == 1){
+  if(inicio == ultimo){
     return inicio;
   } 
 
   Planeta* fake_inicio;
   fake_inicio = inicio;
-  for(int i=0; i<tamanho; i++){
-    cout<<(fake_inicio + i)->getTempoVisita()<<" ";
+  while(true){
+    cout<<fake_inicio->getTempoVisita()<<" ";
+    if(fake_inicio == ultimo){
+      cout<<endl;
+      break;
+    }
+    fake_inicio++;
   }
 
-  int meio_esquerdo = tamanho/2;
-  int meio_direito = tamanho - meio_esquerdo;
-
+  Planeta* meio_esquerdo;
+  meio_esquerdo = inicio + (ultimo-inicio)/2;
+  Planeta* meio_direito;
+  meio_direito = meio_esquerdo+1;
 
   this->separando(inicio, meio_esquerdo);
-  this->separando((inicio + meio_esquerdo), meio_direito);
+  this->separando(meio_direito, ultimo);
 
-  this->unindo(inicio, tamanho);
+  this->unindo(inicio,
+               meio_esquerdo,
+               meio_direito,
+               ultimo);
 
-  return inicio; 
+  //Testando Unindo
+  fake_inicio = inicio;
+  while(true){
+    cout<<fake_inicio->getTempoVisita()<<" ";
+    if(fake_inicio == ultimo){
+      cout<<endl;
+      break;
+    }
+    fake_inicio++;
+  }
+  return inicio;
 }
 
-void Merge::unindo(Planeta* inicio, int tamanho){
-  Planeta* planetas = new Planeta[tamanho];
-
-  for(int i=0; i<tamanho; i++){
-    *(planetas + i) = *(inicio + i);
-  }
-
-  Planeta* a_iterator = planetas;
-  Planeta* b_iterator = (planetas + (tamanho/2));
-
-  bool flag = true;
-  int cnt = 0;
-
-  while(flag){
-    if(a_iterator == (planetas + (tamanho/2))){
-      *(inicio + cnt) = *b_iterator;
-      b_iterator++;
-    }else if(b_iterator == (planetas + (tamanho-1))){
-      *(inicio + cnt) = *a_iterator;
-      a_iterator++;
-    }else if(a_iterator->getTempoVisita() <= b_iterator->getTempoVisita()){
-      *(inicio + cnt) = *a_iterator;
-      a_iterator++;
-    }else{
-      *(inicio + cnt) = *b_iterator;
-      b_iterator++;
-    }
-
-    cnt++;
-
-    if(a_iterator == (planetas + (tamanho/2)) && b_iterator == (planetas + (tamanho-1))){
-      flag = false; 
-    }
-
-  }
-
-  delete[] planetas;
-}
-
-/*
 void Merge::unindo(Planeta* a_inicio, Planeta* a_final, Planeta* b_inicio, Planeta* b_final){
     this->unicnt++;
     cout<<"Unindo: "<<this->unicnt<<endl;
@@ -190,4 +176,4 @@ void Merge::unindo(Planeta* a_inicio, Planeta* a_final, Planeta* b_inicio, Plane
 
     cout<<"deletou a porra toda"<<endl;
 } 
-*/
+

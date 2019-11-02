@@ -1,21 +1,9 @@
 #include "planeta/Planeta.hpp"
+#include "merge/Merge.hpp"
 
 #include <iostream>
 
 using namespace std;
-
-/*
-class Planeta{
-  public:
-    int t;
-    char* ponteiro_inicio_nome;
-    Planeta(int t, char &inicio_nome){
-      this->ponteiro_inicio_nome = &inicio_nome;
-      this->t = t;
-    } 
-    Planeta();
-};
-*/
 
 
 int main(){
@@ -38,8 +26,33 @@ int main(){
     planetas[i] = planeta;
   }
 
+  //Imprimindo valores de planetas
+  for(int i=0; i<quantidade_planetas_P; i++){
+    cout<<"Planeta "<<i<<": "
+        <<"  t:"<<planetas[i].getTempoVisita()
+        <<"  nome:"<<planetas[i].getPrimeiraLetraNome()[0]
+        <<endl;
+  }
 
+  //Ordenando valores
+  /*
+  int quantidade_array_planetas = quantidade_planetas_P - 1;
+  Merge mergeObj(quantidade_array_planetas);
+  mergeObj.separando(&planetas[0], &planetas[quantidade_array_planetas]);
+  */
+  Merge mergeObj;
+  mergeObj.separando(&planetas[0], quantidade_planetas_P);
+   
 
+  //Imprimindo valores ORDENADOS de planetas
+  for(int i=0; i<quantidade_planetas_P; i++){
+    cout<<"Planeta "<<i<<": "
+        <<"  t:"<<planetas[i].getTempoVisita()
+        <<"  nome:"<<planetas[i].getPrimeiraLetraNome()[0]
+        <<endl;
+  }
+
+/*
   //conferindo e limpando
   for(int i=0; i<quantidade_planetas_P; i++){
     cout<<"Planeta "<<i<<": "
@@ -48,4 +61,5 @@ int main(){
         <<endl; 
     planetas[i].limparNome();
   }
+*/
 }

@@ -5,13 +5,15 @@
 
 class Merge{
   private:
-    int _quantidade_planetas;
+    //int _quantidade_planetas;
+    int cnt=0;
+    //int unicnt=0;
 
   public:
-    Merge(int);
+    //Merge(int);
 
-    Planeta* separando(Planeta*, Planeta*);
-    void unindo(Planeta*, Planeta*, Planeta*, Planeta*);
+    Planeta* separando(Planeta*, int);
+    void unindo(Planeta*, int);
 
 };
 #endif
