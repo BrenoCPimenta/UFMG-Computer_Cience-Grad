@@ -11,12 +11,13 @@ class Agenda{
     int _tempo_visita_mes;
     int _quantidade_total_planetas;
     int _quantidade_meses_agenda;
-    Planeta* _inicio_meses[];
-    int _tamanho_meses[];
+    Planeta** _inicio_meses = new Planeta*[150000];
+    int _tamanho_meses[150000];
      
 
   public:
     Agenda(Planeta*, int, int);
+    ~Agenda();
     int getQuantidadeMeses();
     Planeta* getInicioMes(int);
     int getTamanhoMes(int);

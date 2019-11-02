@@ -50,6 +50,7 @@ int main(){
         <<endl;
   }
 
+  /* COMO DEVE SER:::::::::::
   //Agendar
   int quantidade_meses;
   Agenda agendaObj(planetas, tempo_limite_mes_T, quantidade_planetas_P);
@@ -64,7 +65,30 @@ int main(){
     Mes mesObj(inicio_mes, tamanho_mes);
     mesObj.ordenarMes();
   } 
- 
+  */
+
+  //TESTANDO AGENDA
+  int quantidade_meses;
+  Agenda agendaObj(planetas, tempo_limite_mes_T, quantidade_planetas_P);
+  quantidade_meses = agendaObj.getQuantidadeMeses();
+  cout<<"-------------------------------------------------"<<endl;
+  cout<<"QUANTIDADE DE MESES: "<<quantidade_meses<<endl;
+  cout<<"-------------------------------------------------"<<endl<<endl;
+
+  Planeta* inicio_mes;
+  int tamanho_mes;
+  for(int i=0; i<quantidade_meses; i++){
+   tamanho_mes = agendaObj.getTamanhoMes(i);
+   cout<<"-------------------------------------------------"<<endl;
+   cout<<"Mes: "<<i<<"     Tamanho: "<<tamanho_mes<<endl; 
+   inicio_mes = agendaObj.getInicioMes(i);
+   for(int j=0; j<tamanho_mes; j++){
+     cout<<(inicio_mes+j)->getTempoVisita()<<" ";
+   }
+   cout<<endl<<endl;
+  }
+
+   
 
   //Limpando
   for(int i=0; i<quantidade_planetas_P; i++){
