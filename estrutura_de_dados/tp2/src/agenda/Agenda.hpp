@@ -2,6 +2,7 @@
 #define AGENDA_H
 
 
+#include "../mes/Mes.hpp"
 #include "../planeta/Planeta.hpp"
 
 class Agenda{

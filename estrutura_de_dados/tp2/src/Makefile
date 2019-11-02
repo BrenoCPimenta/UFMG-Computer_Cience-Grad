@@ -14,10 +14,14 @@ all: $(EXEC)
 SRC=./src
 PLT=./planeta
 MRG=./merge
+MES=./mes
+AGD=./agenda
 
 #Tipos abstratos de dados
 TAD1=Planeta
 TAD2=Merge
+TAD3=Mes
+TAD4=Agenda
 
 #Pre-Compilando codigo
 $(TAD1).o: $(PLT)/$(TAD1).cpp $(PLT)/$(TAD1).hpp
@@ -26,13 +30,18 @@ $(TAD1).o: $(PLT)/$(TAD1).cpp $(PLT)/$(TAD1).hpp
 $(TAD2).o: $(MRG)/$(TAD2).cpp $(MRG)/$(TAD2).hpp
 	@$(CC) $(CFLAGS) -c  $(MRG)/$(TAD2).cpp -o Merge.o
 
+$(TAD3).o: $(MES)/$(TAD3).cpp $(MES)/$(TAD3).hpp
+	@$(CC) $(CFLAGS) -c  $(MES)/$(TAD3).cpp -o Mes.o
+
+$(TAD4).o: $(AGD)/$(TAD4).cpp $(AGD)/$(TAD4).hpp
+	@$(CC) $(CFLAGS) -c  $(AGD)/$(TAD4).cpp -o Agenda.o
 
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o 
+main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o 
 
 $(EXEC): main
-	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o main.cpp -o $(EXEC)
 
 #Executando a main
 run: main $(EXEC)

@@ -1,4 +1,6 @@
 #include "planeta/Planeta.hpp"
+#include "mes/Mes.hpp"
+#include "agenda/Agenda.hpp"
 #include "merge/Merge.hpp"
 
 #include <iostream>
