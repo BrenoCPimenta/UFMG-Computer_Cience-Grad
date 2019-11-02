@@ -44,6 +44,7 @@ int main(){
   mergeObj.separando(&planetas[0], quantidade_planetas_P);
    
 
+  cout<<"\n\n";
   //Imprimindo valores ORDENADOS de planetas
   for(int i=0; i<quantidade_planetas_P; i++){
     cout<<"Planeta "<<i<<": "
