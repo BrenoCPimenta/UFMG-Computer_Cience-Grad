@@ -16,12 +16,17 @@ PLT=./planeta
 MRG=./merge
 MES=./mes
 AGD=./agenda
+COT=./count
+#RDX=./radix
 
 #Tipos abstratos de dados
 TAD1=Planeta
 TAD2=Merge
 TAD3=Mes
 TAD4=Agenda
+TAD5=CountSort
+#TAD6=RADIX
+
 
 #Pre-Compilando codigo
 $(TAD1).o: $(PLT)/$(TAD1).cpp $(PLT)/$(TAD1).hpp
@@ -36,12 +41,20 @@ $(TAD3).o: $(MES)/$(TAD3).cpp $(MES)/$(TAD3).hpp
 $(TAD4).o: $(AGD)/$(TAD4).cpp $(AGD)/$(TAD4).hpp
 	@$(CC) $(CFLAGS) -c  $(AGD)/$(TAD4).cpp -o Agenda.o
 
+$(TAD5).o: $(COT)/$(TAD5).cpp $(COT)/$(TAD5).hpp
+	@$(CC) $(CFLAGS) -c  $(COT)/$(TAD5).cpp -o CountSort.o
+
+#$(TAD6).o: $(RDX)/$(TAD6).cpp $(RDX)/$(TAD6).hpp
+#	@$(CC) $(CFLAGS) -c  $(RDX)/$(TAD6).cpp -o Radix.o
+
+
+
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o 
+main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o
 
 $(EXEC): main
-	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o main.cpp -o $(EXEC)
 
 #Executando a main
 run: main $(EXEC)

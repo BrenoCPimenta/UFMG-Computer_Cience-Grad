@@ -2,6 +2,7 @@
 #include "mes/Mes.hpp"
 #include "agenda/Agenda.hpp"
 #include "merge/Merge.hpp"
+#include "count/CountSort.hpp"
 
 #include <iostream>
 
@@ -67,6 +68,7 @@ int main(){
   } 
   */
 
+  /*
   //TESTANDO AGENDA
   int quantidade_meses;
   Agenda agendaObj(planetas, tempo_limite_mes_T, quantidade_planetas_P);
@@ -87,8 +89,66 @@ int main(){
    }
    cout<<endl<<endl;
   }
+*/
 
-   
+/*
+  cout<<"\nPosicao 7 \n"<<endl;
+  Planeta* inicio_mes;
+  int tamanho_mes;
+  Agenda agendaObj(planetas, tempo_limite_mes_T, quantidade_planetas_P);
+  int quantidade_meses;
+  quantidade_meses = agendaObj.getQuantidadeMeses();
+
+  cout<<"\nPosicao 8 \n"<<endl;
+
+  CountSort countObj;
+  
+  cout<<"\nPosicao 9 \n"<<endl;
+
+  for(int i=0; i<quantidade_meses; i++){
+    cout<<"--------------------------------------"<<endl;
+    cout<<"                Mês "<<i+1<<endl;
+    tamanho_mes = agendaObj.getTamanhoMes(i);
+    inicio_mes = agendaObj.getInicioMes(i);
+    countObj.sortByOneChar(&planetas[0], tamanho_mes, 0);
+
+
+    cout<<"\nPosicao 101 \n"<<endl;
+
+    for(int j=0; j<tamanho_mes; j++){
+      cout<<(inicio_mes+j)->getTempoVisita()<<" ";
+
+    
+      cout<<"\nPosicao 102 \n"<<endl;
+
+      for(int k=0; k<tamanho_nome_planeta_x - 1; i++){
+       
+        cout<<"\n Tamanho: "<<tamanho_nome_planeta_x<<endl;
+        cout<<planetas[j].getPrimeiraLetraNome()[k];
+
+      cout<<"\nPosicao 103 \n"<<endl;
+
+      }
+      cout<<endl;
+    }
+
+  }
+ */
+
+
+  cout<<"\n\nCountSort:\n";
+  //Testando ordenacao por nome sem divisao por mes
+  
+  CountSort countObj;
+  countObj.sortByOneChar(&planetas[0], quantidade_planetas_P, 0);
+
+  for(int i=0; i<quantidade_planetas_P; i++){
+    cout<<"Planeta "<<i<<": "
+        <<"  t:"<<planetas[i].getTempoVisita()
+        <<"  nome:"<<planetas[i].getPrimeiraLetraNome()[0]
+        <<endl;
+  }
+
 
   //Limpando
   for(int i=0; i<quantidade_planetas_P; i++){
