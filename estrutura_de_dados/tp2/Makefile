@@ -12,20 +12,18 @@ all: $(EXEC)
 
 #Caminhos reutilizaveis
 SRC=./src
-PLT=./planeta
-MRG=./merge
-MES=./mes
-AGD=./agenda
-COT=./count
-#RDX=./radix
+PLT=./src/planeta
+MRG=./src/merge
+AGD=./src/agenda
+COT=./src/count
+RDX=./src/radix
 
 #Tipos abstratos de dados
 TAD1=Planeta
 TAD2=Merge
-TAD3=Mes
+TAD3=Radix
 TAD4=Agenda
 TAD5=CountSort
-#TAD6=RADIX
 
 
 #Pre-Compilando codigo
@@ -34,9 +32,9 @@ $(TAD1).o: $(PLT)/$(TAD1).cpp $(PLT)/$(TAD1).hpp
 	
 $(TAD2).o: $(MRG)/$(TAD2).cpp $(MRG)/$(TAD2).hpp
 	@$(CC) $(CFLAGS) -c  $(MRG)/$(TAD2).cpp -o Merge.o
-
-$(TAD3).o: $(MES)/$(TAD3).cpp $(MES)/$(TAD3).hpp
-	@$(CC) $(CFLAGS) -c  $(MES)/$(TAD3).cpp -o Mes.o
+	
+$(TAD3).o: $(RDX)/$(TAD3).cpp $(RDX)/$(TAD3).hpp
+	@$(CC) $(CFLAGS) -c  $(RDX)/$(TAD3).cpp -o Radix.o
 
 $(TAD4).o: $(AGD)/$(TAD4).cpp $(AGD)/$(TAD4).hpp
 	@$(CC) $(CFLAGS) -c  $(AGD)/$(TAD4).cpp -o Agenda.o
@@ -44,17 +42,14 @@ $(TAD4).o: $(AGD)/$(TAD4).cpp $(AGD)/$(TAD4).hpp
 $(TAD5).o: $(COT)/$(TAD5).cpp $(COT)/$(TAD5).hpp
 	@$(CC) $(CFLAGS) -c  $(COT)/$(TAD5).cpp -o CountSort.o
 
-#$(TAD6).o: $(RDX)/$(TAD6).cpp $(RDX)/$(TAD6).hpp
-#	@$(CC) $(CFLAGS) -c  $(RDX)/$(TAD6).cpp -o Radix.o
-
 
 
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o
+main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o 
 
 $(EXEC): main
-	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o  $(SRC)/main.cpp -o $(EXEC)
 
 #Executando a main
 run: main $(EXEC)
@@ -64,6 +59,9 @@ run: main $(EXEC)
 test: $(EXEC)
 	@bash run_tests.sh $(EXEC) $(TMPOUT)
 
+time1: $(EXEC)
+	@bash run_time_tests.sh $(EXEC) $(TMPOUT)
+
 #Limpando codigo pre-compilado
 clean: # remove todos os arquivos temporarios que forem gerados pela compilacao
 	rm -rf *.o
@@ -72,14 +70,3 @@ clean: # remove todos os arquivos temporarios que forem gerados pela compilacao
 clean_all: # remove todos os arquivos temporarios que forem gerados pela compilacao
 	rm -rf *.o main_test $(EXEC) main_test test.result
 
-
-
-#------------------------------------------------------------------------------
-TST=./src/testes/
-
-comp_test_code: main 
-	@$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(TST)Teste.cpp $(TST)main_test.cpp -o main_test
-
-#Teste do codigo
-test_code: comp_test_code
-	./main_test

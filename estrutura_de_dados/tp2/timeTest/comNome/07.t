@@ -1,0 +1,8 @@
+2000 7 32
+993 hzhihytufjuhfagwhzhihytufjuhfagw
+533 fjuhfagwfjuhfagwhzhihytufjuhfagw
+703 wfjdkfjnfjuhfagwhzhihytufjuhfagw
+839 hfkjdhasfjuhfagwhzhihytufjuhfagw
+1500 fhduuhnbfjuhfagwhzhihytufjuhfagw
+1356 fhuitabrfjuhfagwhzhihytufjuhfagw
+1530 fhttuhnbfjuhfagwhzhihytufjuhfagw
