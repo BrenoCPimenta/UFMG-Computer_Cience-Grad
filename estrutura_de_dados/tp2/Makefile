@@ -59,12 +59,6 @@ run: main $(EXEC)
 test: $(EXEC)
 	@bash run_tests.sh $(EXEC) $(TMPOUT)
 
-time_sem_nome: $(EXEC)
-	@bash run_time_sem_nome_tests.sh $(EXEC) $(TMPOUT)
-
-time_com_nome: $(EXEC)
-	@bash run_time_com_nome_tests.sh $(EXEC) $(TMPOUT)
-
 #Limpando codigo pre-compilado
 clean: # remove todos os arquivos temporarios que forem gerados pela compilacao
 	rm -rf *.o
@@ -72,4 +66,3 @@ clean: # remove todos os arquivos temporarios que forem gerados pela compilacao
 #Limpando codigo pre-compilado e executáveis criados
 clean_all: # remove todos os arquivos temporarios que forem gerados pela compilacao
 	rm -rf *.o main_test $(EXEC) main_test test.result
-
