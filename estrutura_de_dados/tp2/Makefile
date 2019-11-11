@@ -59,8 +59,11 @@ run: main $(EXEC)
 test: $(EXEC)
 	@bash run_tests.sh $(EXEC) $(TMPOUT)
 
-time1: $(EXEC)
-	@bash run_time_tests.sh $(EXEC) $(TMPOUT)
+time_sem_nome: $(EXEC)
+	@bash run_time_sem_nome_tests.sh $(EXEC) $(TMPOUT)
+
+time_com_nome: $(EXEC)
+	@bash run_time_com_nome_tests.sh $(EXEC) $(TMPOUT)
 
 #Limpando codigo pre-compilado
 clean: # remove todos os arquivos temporarios que forem gerados pela compilacao

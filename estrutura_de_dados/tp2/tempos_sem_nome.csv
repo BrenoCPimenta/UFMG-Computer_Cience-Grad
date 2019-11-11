@@ -1,20 +1,60 @@
 Medindo tempo sem nome 01
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,002s
+sys	0m0,000s
 Medindo tempo sem nome 02
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,000s
+sys	0m0,003s
 Medindo tempo sem nome 03
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,003s
+sys	0m0,001s
 Medindo tempo sem nome 04
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,006s
+user	0m0,000s
+sys	0m0,006s
 Medindo tempo sem nome 05
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,002s
+sys	0m0,001s
 Medindo tempo sem nome 06
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,002s
+sys	0m0,001s
 Medindo tempo sem nome 07
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,002s
+user	0m0,000s
+sys	0m0,003s
 Medindo tempo sem nome 08
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,003s
+sys	0m0,001s
 Medindo tempo sem nome 09
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,003s
+sys	0m0,001s
 Medindo tempo sem nome 10
-run_time_tests.sh: line 9: /usr/bin/time: No such file or directory
+run_time_sem_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,000s
+sys	0m0,004s

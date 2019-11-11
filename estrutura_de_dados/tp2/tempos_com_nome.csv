@@ -1,0 +1,63 @@
+Medindo tempo com nome 01
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,001s
+sys	0m0,002s
+Medindo tempo com nome 02
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,001s
+sys	0m0,003s
+Medindo tempo com nome 03
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,003s
+sys	0m0,001s
+Medindo tempo com nome 04
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,005s
+user	0m0,001s
+sys	0m0,004s
+Medindo tempo com nome 05
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,003s
+sys	0m0,001s
+Medindo tempo com nome 06
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,000s
+sys	0m0,004s
+Medindo tempo com nome 07
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,004s
+user	0m0,000s
+sys	0m0,004s
+run_time_com_nome_tests.sh: line 4: 11119 Segmentation fault      (core dumped) $EXEC < timeTest/comNome/$testname.t > $TMP_OUT
+Medindo tempo com nome 08
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,002s
+sys	0m0,001s
+run_time_com_nome_tests.sh: line 4: 11124 Segmentation fault      (core dumped) $EXEC < timeTest/comNome/$testname.t > $TMP_OUT
+Medindo tempo com nome 09
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,002s
+sys	0m0,001s
+run_time_com_nome_tests.sh: line 4: 11137 Segmentation fault      (core dumped) $EXEC < timeTest/comNome/$testname.t > $TMP_OUT
+Medindo tempo com nome 10
+run_time_com_nome_tests.sh: line 8: -f: command not found
+
+real	0m0,003s
+user	0m0,002s
+sys	0m0,001s
