@@ -70,10 +70,7 @@ int main(){
 
   //Primeira ordenacao
   ControleArvore controle();
-  for(int i=0; i<qtd_arvores-1; i++(){
-      controle.ordenar(arvores);
-  }
-
+  controle.ordenar(arvores);
   controle.juntandoArvores(arvores);
   controle.construindoCodigo(arvores[0]);
   controle.passandoCodigo(tabela_hash, arvores[0]);

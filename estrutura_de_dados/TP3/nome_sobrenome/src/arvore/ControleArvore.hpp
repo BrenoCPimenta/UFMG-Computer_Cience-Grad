@@ -7,6 +7,8 @@
 #include "../lista/CelulaEspecial.hpp"
 #include "../ordenacao/CountSort.hpp"
 #include "../ordenacao/Insercao.hpp"
+#include "../ordenacao/Merge.hpp"
+#include "../huffman/Huffman.hpp"
 
 
 class ControleArvore{

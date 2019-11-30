@@ -26,6 +26,7 @@ TAD5=Arvore
 TAD6=ControleArvore
 TAD7=CountSort
 TAD8=Insercao
+TAD9=Merge
 
 #Pre-Compilando codigo
 $(TAD1).o: $(SRC)/$(LIT)/$(TAD1).cpp $(SRC)/$(LIT)/$(TAD1).hpp
@@ -47,15 +48,20 @@ $(TAD3).o: $(SRC)/$(HSH)/$(TAD3).cpp $(SRC)/$(HSH)/$(TAD3).hpp
 #	@$(CC) $(CFLAGS) -c  $(SRC)/$(ARV)/$(TAD6).cpp -o ControleArvore.o
 #
 #$(TAD7).o: $(SRC)/$(ORD)/$(TAD7).cpp $(SRC)/$(ORD)/$(TAD7).hpp
-#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TA7).cpp -o CountSort.o
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TAD7).cpp -o CountSort.o
 #
 #$(TAD8).o: $(SRC)/$(ORD)/$(TAD8).cpp $(SRC)/$(ORD)/$(TAD8).hpp
-#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TA8).cpp -o Insercao.o
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TAD8).cpp -o Insercao.o
+#
+#$(TAD9).o: $(SRC)/$(ORD)/$(TAD9).cpp $(SRC)/$(ORD)/$(TAD9).hpp
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TAD9).cpp -o Insercao.o
+
+
 
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
 main: $(TAD1).o $(TAD2).o $(TAD3).o 
-#$(TAD4).o $(TAD5).o $(TAD6).o $(TAD7).o $(TAD8).o 
+#$(TAD4).o $(TAD5).o $(TAD6).o $(TAD7).o $(TAD8).o $(TAD9).o 
 
 $(EXEC): main
 	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(SRC)/main.cpp -o $(EXEC)

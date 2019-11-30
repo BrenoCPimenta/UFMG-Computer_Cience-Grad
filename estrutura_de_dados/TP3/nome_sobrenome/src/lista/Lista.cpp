@@ -64,6 +64,7 @@ CelulaEspecial* Lista::getPalavra(char* nome){
     }
     aux=aux->getAnterior();
   }
+  return NULL;
 }
 
 CelulaEspecial* Lista::getPalavra(int index){
