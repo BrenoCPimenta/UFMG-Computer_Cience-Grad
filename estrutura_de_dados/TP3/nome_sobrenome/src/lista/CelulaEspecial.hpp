@@ -13,6 +13,7 @@ class CelulaEspecial{
     CelulaEspecial* _anterior;
     
   public:
+    CelulaEspecial();
     CelulaEspecial(char*);
     void setProximo(CelulaEspecial*);
     void setAnterior(CelulaEspecial*);

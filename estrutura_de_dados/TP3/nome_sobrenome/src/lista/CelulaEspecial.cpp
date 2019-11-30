@@ -5,6 +5,11 @@ using namespace std;
 
 CelulaEspecial::CelulaEspecial(char* nome):_nome(nome){}
 
+//Construtor para celula de controle em listas
+CelulaEspecial::CelulaEspecial(){
+  this->_repeticao = 0;
+}
+
 void CelulaEspecial::setProximo(CelulaEspecial *proximo){
   this->_proximo = proximo;
 }

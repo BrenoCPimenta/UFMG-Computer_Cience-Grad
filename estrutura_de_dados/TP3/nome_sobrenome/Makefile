@@ -3,7 +3,7 @@
 #Comandos basicos para a execucao
 CC=g++
 CFLAGS=-Wall -Wextra -g -std=c++11
-EXEC=./tp3 
+EXEC=./tp3
 TMPOUT=tp3.testresult
 
 
