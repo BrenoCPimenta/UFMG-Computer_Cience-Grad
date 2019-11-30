@@ -14,11 +14,18 @@ all: $(EXEC)
 SRC=./src
 LIT=./lista
 HSH=./hash
+ARV=./arvore
+ORD=./ordenacao
 
 #Tipos abstratos de dados
 TAD1=CelulaEspecial
 TAD2=Lista
 TAD3=Hash
+TAD4=No
+TAD5=Arvore
+TAD6=ControleArvore
+TAD7=CountSort
+TAD8=Insercao
 
 #Pre-Compilando codigo
 $(TAD1).o: $(SRC)/$(LIT)/$(TAD1).cpp $(SRC)/$(LIT)/$(TAD1).hpp
@@ -30,9 +37,25 @@ $(TAD2).o: $(SRC)/$(LIT)/$(TAD2).cpp $(SRC)/$(LIT)/$(TAD2).hpp
 $(TAD3).o: $(SRC)/$(HSH)/$(TAD3).cpp $(SRC)/$(HSH)/$(TAD3).hpp
 	@$(CC) $(CFLAGS) -c  $(SRC)/$(HSH)/$(TAD3).cpp -o Hash.o
 
+#$(TAD4).o: $(SRC)/$(ARV)/$(TAD4).cpp $(SRC)/$(ARV)/$(TAD4).hpp
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ARV)/$(TAD4).cpp -o No.o
+#
+#$(TAD5).o: $(SRC)/$(ARV)/$(TAD5).cpp $(SRC)/$(ARV)/$(TAD5).hpp
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ARV)/$(TAD5).cpp -o Arvore.o
+#
+#$(TAD6).o: $(SRC)/$(ARV)/$(TAD6).cpp $(SRC)/$(ARV)/$(TAD6).hpp
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ARV)/$(TAD6).cpp -o ControleArvore.o
+#
+#$(TAD7).o: $(SRC)/$(ORD)/$(TAD7).cpp $(SRC)/$(ORD)/$(TAD7).hpp
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TA7).cpp -o CountSort.o
+#
+#$(TAD8).o: $(SRC)/$(ORD)/$(TAD8).cpp $(SRC)/$(ORD)/$(TAD8).hpp
+#	@$(CC) $(CFLAGS) -c  $(SRC)/$(ORD)/$(TA8).cpp -o Insercao.o
+
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o $(TAD3).o
+main: $(TAD1).o $(TAD2).o $(TAD3).o 
+#$(TAD4).o $(TAD5).o $(TAD6).o $(TAD7).o $(TAD8).o 
 
 $(EXEC): main
 	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(SRC)/main.cpp -o $(EXEC)

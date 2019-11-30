@@ -10,7 +10,7 @@ class Lista{
 
   CelulaEspecial* _final_lista;
   CelulaEspecial* _comeco_lista;
-  //int _tamanho;
+  int _tamanho;
   
 
   public:
@@ -21,13 +21,10 @@ class Lista{
   bool verificarVazia();
   bool esvaziar();
   bool verificarSePossuiPalavra(char*);
-  CelulaEspecial* getPalavra(char*);
-
-  /*
-  int* getValores();
   int getTamanho();
-  bool valorJaArmazenado(int);
-  */
+  CelulaEspecial* getPalavra(char*);
+  CelulaEspecial* getPalavra(int);
+
 };
 
 #endif

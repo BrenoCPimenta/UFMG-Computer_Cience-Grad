@@ -8,6 +8,7 @@ Lista::Lista(){
   CelulaEspecial* celulaControle = new CelulaEspecial();
   this->_comeco_lista = celulaControle;
   this->_final_lista = celulaControle;
+  this->_tamanho=0;
 }
 
 Lista::~Lista(){
@@ -21,6 +22,7 @@ bool Lista::addPalavra(char* nome){
   
   this->_final_lista->setProximo(celulaObj);
   this->_final_lista = celulaObj;
+  this->_tamanho++;
 
   return true;
 }
@@ -64,3 +66,14 @@ CelulaEspecial* Lista::getPalavra(char* nome){
   }
 }
 
+CelulaEspecial* Lista::getPalavra(int index){
+  CelulaEspecial* aux = this->_comeco_lista;
+  for(int i=0; i<index;i++){
+    aux = aux->getProximo();
+  }  
+  return aux;
+}
+
+int Lista::getTamanho(){
+  return this->_tamanho;
+}

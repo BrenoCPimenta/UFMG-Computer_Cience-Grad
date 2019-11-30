@@ -11,15 +11,17 @@ class No{
     No* pai;
     char _nome[63];
     int _repeticao;
+    int _codigo;
     int _folhas;
     
   public:
-    No(char*, int, int);
+    No(char*, int);
     char* getNome();
     int getRepeticao();
     int getFolhas();
-    void setFilhos();
-  
+    void setFilhos(No*, No*);
+    int setCodigo();
+    int getCodigo();
   
 };
 
