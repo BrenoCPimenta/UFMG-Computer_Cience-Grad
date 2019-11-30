@@ -5,10 +5,12 @@
 using namespace std;
 
 Lista::Lista(){
-  CelulaEspecial* celulaCabeca = new CelulaEspecial('0');
+  char* nome_celula_controle = new char;
+  *nome_celula_controle = '!';
+  CelulaEspecial* celulaCabeca = new CelulaEspecial(nome_celula_controle);
   this->_comeco_lista = celulaCabeca;
   this->_final_lista = celulaCabeca;
-  this->_tamanho = 0;
+  //this->_tamanho = 0;
 }
 
 Lista::~Lista(){
@@ -16,14 +18,14 @@ Lista::~Lista(){
   delete _comeco_lista;
 }
 
-bool Lista::addCelula(char* nome){
+bool Lista::addPalavra(char* nome){
   CelulaEspecial* celulaObj = new CelulaEspecial(nome);
-  celulaObj->setProximo(this->_final_lista);
+  celulaObj->setAnterior(this->_final_lista);
   
-  this->_final_lista->setAnterior(celulaObj);
+  this->_final_lista->setProximo(celulaObj);
   this->_final_lista = celulaObj;
 
-  this->_tamanho++;
+  //this->_tamanho++;
   return true;
 }
 
@@ -34,15 +36,48 @@ bool Lista::verificarVazia(){
 	}
 	return false;
 }
+
 bool Lista::esvaziar(){
 	while(this->_final_lista != this->_comeco_lista){
-    this->_final_lista = this->_final_lista->getProximo();
-    delete this->_final_lista->getAnterior();
+    this->_final_lista = this->_final_lista->getAnterior();
+    delete this->_final_lista->getProximo();
   }
-  this->_tamanho = 0;
+  //this->_tamanho = 0;
   return true;
 }
 
+
+bool Lista::verificarSePossuiPalavra(char* nome){
+  CelulaEspecial* aux = this->_final_lista;
+  while(aux != this->_comeco_lista){
+    cout<<"RODANDO"<<endl;
+    if(*(aux->getNome()) == *nome){
+      return true;
+    }
+    aux=aux->getAnterior();
+  }
+  return false;
+}
+
+CelulaEspecial* Lista::getPalavra(char* nome){
+  CelulaEspecial* aux = this->_final_lista;
+  while(aux != this->_comeco_lista){
+    if(*(aux->getNome()) == *nome){
+      return aux;
+    }
+    aux=aux->getAnterior();
+  }
+  char* teste;
+  *teste = 'e';
+  return new CelulaEspecial(teste);
+}
+
+
+
+/*
+int Lista::getTamanho(){
+  return this->_tamanho;
+}
 
 int* Lista::getValores(){
   int* valores = new int[this->_tamanho];
@@ -54,17 +89,4 @@ int* Lista::getValores(){
   return valores;
 }
 
-int Lista::getTamanho(){
-  return this->_tamanho;
-}
-
-bool Lista::valorJaArmazenado(int valor){
-  CelulaEspecial* aux = this->_final_lista;
-  while(aux != this->_comeco_lista){
-    if(aux->getValor() == valor){
-      return true;
-    }
-    aux=aux->getProximo();
-  }
-  return false;
-}
+*/

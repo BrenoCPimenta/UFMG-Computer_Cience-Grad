@@ -10,19 +10,24 @@ class Lista{
 
   CelulaEspecial* _final_lista;
   CelulaEspecial* _comeco_lista;
-  int _tamanho;
+  //int _tamanho;
   
 
   public:
   Lista();
   ~Lista();
 
-  bool addCelula(int);
+  bool addPalavra(char*);
   bool verificarVazia();
   bool esvaziar();
+  bool verificarSePossuiPalavra(char*);
+  CelulaEspecial* getPalavra(char*);
+
+  /*
   int* getValores();
   int getTamanho();
   bool valorJaArmazenado(int);
+  */
 };
 
 #endif

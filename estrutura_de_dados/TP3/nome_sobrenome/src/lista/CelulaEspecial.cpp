@@ -5,10 +5,6 @@ using namespace std;
 
 CelulaEspecial::CelulaEspecial(char* nome):_nome(nome){}
 
-void CelulaEspecial::setValor(int &valor){
-  this->_valor=valor;
-}
-
 void CelulaEspecial::setProximo(CelulaEspecial *proximo){
   this->_proximo = proximo;
 }
@@ -17,8 +13,9 @@ void CelulaEspecial::setAnterior(CelulaEspecial *anterior){
   this->_anterior = anterior;
 }
 
-void CelulaEspecial::addRepeticao(){
+bool CelulaEspecial::somaUmRepeticao(){
   this->_repeticao++;
+  return true;
 }
 
 
