@@ -1,6 +1,8 @@
 #include "graph/NodeGraph.hpp"
+#include "graph/Graph.hpp"
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -8,56 +10,42 @@ using namespace std;
 int main(){
 
     //Lendo parametros iniciais
+    std::vector<int> values;
+    std::vector<std::vector<int>> players_position;
     int table_N;
     int table_M;
     int players;
 
     cin>>table_N>>table_M>>players;
-
-    int table[table_N][table_M];
-    bool visited_positions[table_N][table_M];
-    int players_initial_position[players][players];
+    
 
     for(int n=0; n<table_N; n++) {
         for(int m=0; m<table_M; m++) {
-            cin>>table[n][m];
-            visited_positions[n][m] = false;
+            int temp;
+            cin>>temp;
+            values.push_back(temp);
         }
     }
+
     for(int i=0; i<players; i++) {
-        cin>>players_initial_position[i][0];
-        cin>>players_initial_position[i][1];
-        visited_positions[players_initial_position[i][0]][players_initial_position[i][1]] = true;
+        int m_position;
+        int n_position;
+        cin>>m_position>>n_position;
+        players_position.push_back({m_position, n_position});
     }
-
-    cout<<table_N<<endl;
-    cout<<table_M<<endl;
-    cout<<players<<endl;
-
-    /*
+   /*--------------------------------------------------------------------------------------------------
      *
     //Process Criando inicial
     NodeGraph node0(0);
     NodeGraph node1(1);
-
-    //SetChildren
     node0.setChildren(&node1);
-
-    //copia
     NodeGraph copia = node0;
-
-    
-    //busca copia
     NodeGraph* reference = copia.getChildren()[0];
-    
-    //get value from children
     cout << "Node value reference: " << reference->getValue()<< endl;
     */
 
-    /*
-     Verify type
-    #include <typeinfo>
-    cout << typeid(variable).name() << endl;
-    */
 
+    Graph graph(table_N, table_M, values); 
+    graph.printPositionsPossibleMoves();
 }
+
