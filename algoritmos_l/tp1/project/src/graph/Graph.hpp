@@ -15,7 +15,6 @@ class Graph {
     public:
         Graph(int, int, std::vector<int>);
         NodeGraph* getNodeByLinearPosition(int, int);
-        //void setPlayerOnPosition(int, int);
         void printPositionsPossibleMoves();
 };
 #endif

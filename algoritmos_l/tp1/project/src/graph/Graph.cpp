@@ -15,6 +15,9 @@ Graph::Graph(int n, int m, std::vector<int> table):_n(n), _m(m) {
             int value = table[linear_position];
             NodeGraph* node = new NodeGraph(value, i, j);
             this->_node_sequence.push_back(node);        
+            if( i==(_n-1) && j==(_m-1)){
+                node->setAsFinalPosition();
+            }
         }
     }
 
@@ -66,12 +69,6 @@ NodeGraph* Graph::getNodeByLinearPosition(int y_position, int x_position){
     return this->_node_sequence[position];
 }
 
-/*------------------------------------------------------------------------------------
-void Graph::setPlayerOnPosition(int y_position, int x_position){
-    NodeGraph* node = this->getNodeByLinearPosition(y_position, x_position);
-    node->setHasUser(); 
-}*/
-
 void Graph::printPositionsPossibleMoves() {
     for(int i=0; i<_n; i++){
         for(int j=0; j<_m; j++){
@@ -83,9 +80,7 @@ void Graph::printPositionsPossibleMoves() {
             
             for(int k=0; k < children.size(); k++) {
                 NodeGraph* child_node = children[k];
-                //std::vector<int> child_position = child_node->getPosition();
                 std::vector<int> child_position = child_node->getPosition();
-                //int child_value = child_node->getValue();
                 cout<<" -> ["<<child_position[0]<<"]["<<child_position[1]<<"]";
             }
             cout<<endl;

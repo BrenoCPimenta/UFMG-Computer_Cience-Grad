@@ -12,11 +12,11 @@ int main(){
 
     //Lendo parametros iniciais
     std::vector<int> values;
-    std::vector<std::vector<int>> players_position;
     int table_N;
     int table_M;
     int number_of_players;
     std::vector<Player> players;
+    std::vector<std::vector<int>> players_position;
 
     cin>>table_N>>table_M>>number_of_players;
     
@@ -35,9 +35,13 @@ int main(){
         int m_position;
         int n_position;
         cin>>m_position>>n_position;
+
+        //Create Player
         Player player_temp(n_position, m_position); 
         players.push_back(player_temp);
-        graph.setPlayerOnPosition(n_position, m_position);
+
+        //Save Position
+        players_position.push_back({n_position, m_position});
     }
    /*--------------------------------------------------------------------------------------------------
      *

@@ -1,5 +1,10 @@
 #include "NodeHeap.hpp"
 
+using namespace std;
+
+NodeHeap::NodeHeap(){
+    this->_chain_end = true;
+}
 
 NodeHeap::NodeHeap(NodeHeap *father, NodeGraph *graph_reference):_father(father), _graph_reference(graph_reference){}
 
@@ -17,4 +22,13 @@ bool NodeHeap::hasPath(){
 
 void NodeHeap::setEmptyPath(){
     this->_has_path = false;
+}
+
+std::vector<std::vector<int>> NodeHeap::getChildrenPosition(){
+    std::vector<NodeGraph*> graph_children = _graph_reference->getChildren();
+    std::vector<std::vector<int>> children_position;
+    for(int i=0; i<graph_children.size(); i++){
+        children_position.push_back(graph_children[i]->getPosition());
+    }
+    return children_position;
 }

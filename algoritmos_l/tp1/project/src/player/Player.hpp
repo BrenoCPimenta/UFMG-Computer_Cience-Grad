@@ -8,17 +8,17 @@ class Player {
 
     private:
         std::vector<std::vector<int>> _path;
-        bool _winner = false;
+        bool _finished = false;
         std::vector <int> _position;
         int _turns;
 
     public:
         Player(int, int);
-        bool isWinner();
+        bool hasFinished();
         std::vector<std::vector<int>> getPath();
         std::vector<int> getPosition();
         void setPath( std::vector<std::vector<int>> );
         void setNumberOfTurns(int);
-        void setWinner();
+        void setFinished();
 };
 #endif

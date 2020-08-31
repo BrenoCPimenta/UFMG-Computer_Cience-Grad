@@ -21,7 +21,7 @@ TAD1=NodeGraph
 TAD2=Graph
 TAD3=Player
 TAD4=NodeHeap
-TAD5=HEAP
+TAD5=Heap
 
 
 #Pre-Compilando codigo
@@ -37,14 +37,16 @@ $(TAD3).o: $(SRC)/$(PLY)/$(TAD3).cpp $(SRC)/$(PLY)/$(TAD3).hpp
 $(TAD4).o: $(SRC)/$(HEP)/$(TAD4).cpp $(SRC)/$(HEP)/$(TAD4).hpp
 	@$(CC) $(CFLAGS) -c  $(SRC)/$(HEP)/$(TAD4).cpp -o NodeHeap.o
 
+$(TAD5).o: $(SRC)/$(HEP)/$(TAD5).cpp $(SRC)/$(HEP)/$(TAD5).hpp
+	@$(CC) $(CFLAGS) -c  $(SRC)/$(HEP)/$(TAD5).cpp -o Heap.o
 
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o
+main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o $(TAD5).o
 
 #Gerando executavel
 $(EXEC): main
-	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o  $(TAD4).o $(SRC)/main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o  $(TAD4).o  $(TAD5).o $(SRC)/main.cpp -o $(EXEC)
 
 #Executando a main
 run: $(EXEC)
@@ -56,7 +58,6 @@ test: $(EXEC)
 
 valgrind_test:  ${EXEC}
 	tests/01.in | valgrind --leak-check=yes ${EXEC}
-
 
 #Limpando codigo pre-compilado e executáveis criados
 clean: # remove todos os arquivos temporarios que forem gerados pela compilacao

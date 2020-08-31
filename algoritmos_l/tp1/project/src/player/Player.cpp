@@ -8,8 +8,8 @@ Player::Player(int y, int x){
     this->_position.push_back(x);
 }
 
-bool Player::isWinner(){
-    return _winner;
+bool Player::hasFinished(){
+    return _finished;
 }
 
 std::vector<std::vector<int>> Player::getPath(){
@@ -28,6 +28,6 @@ void Player::setNumberOfTurns(int turns){
     this->_turns = turns;
 }
 
-void Player::setWinner(){
-    this->_winner = true;
+void Player::setFinished(){
+    this->_finished= true;
 }

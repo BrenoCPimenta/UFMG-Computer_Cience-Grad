@@ -23,11 +23,6 @@ vector<int> NodeGraph::getPosition(){
     return positions;
 }
 
-/*-----------------------------------------
-bool NodeGraph::hasUser(){
-    return this->_has_user;
-}*/
-
 bool NodeGraph::isFinalPosition(){
     return _is_final_position;
 }
@@ -40,9 +35,4 @@ void NodeGraph::setChildren(NodeGraph *node){
     this->_children.push_back(node);
 }
 
-/*------------------------------------------------------------------
-void NodeGraph::setHasUser(){
-    this->_has_user = true;
-}
-*/
 
