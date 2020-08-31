@@ -12,6 +12,7 @@ class Heap {
     private:
         Graph _graph;
         std::vector<NodeHeap*> _node_control;
+        NodeHeap* _chain_end;
         std::vector<std::vector<int>> _players_position;
 
     public:

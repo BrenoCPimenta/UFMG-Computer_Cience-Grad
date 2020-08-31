@@ -64,6 +64,15 @@ Graph::Graph(int n, int m, std::vector<int> table):_n(n), _m(m) {
 
 }
 
+
+Graph::~Graph(){
+    int addresses = (int)_node_sequence.size() - 1;
+    for(int i = addresses; i>=0; i--){
+            delete _node_sequence[i];
+    }
+}
+
+
 NodeGraph* Graph::getNodeByLinearPosition(int y_position, int x_position){
     int position = (y_position * _m) + x_position;
     return this->_node_sequence[position];
@@ -78,7 +87,7 @@ void Graph::printPositionsPossibleMoves() {
             NodeGraph* father_node = this->_node_sequence[linear_position];
             std::vector<NodeGraph*> children = father_node->getChildren();
             
-            for(int k=0; k < children.size(); k++) {
+            for(int k=0; k < (int)children.size(); k++) {
                 NodeGraph* child_node = children[k];
                 std::vector<int> child_position = child_node->getPosition();
                 cout<<" -> ["<<child_position[0]<<"]["<<child_position[1]<<"]";

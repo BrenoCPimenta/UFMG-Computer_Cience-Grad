@@ -4,7 +4,13 @@
 using namespace std;
 
 
-Heap::Heap(Graph graph, std::vector<std::vector<int>> players_position):_graph(graph), _players_position(players_position){}
+Heap::Heap(Graph graph, std::vector<std::vector<int>> players_position):_graph(graph), _players_position(players_position){
+    //Create root heap node
+    this->_chain_end = new NodeHeap();
+    this->_node_control.push_back(_chain_end);//add ao controle de nos para ser deletado no final
+
+
+}
 
 void Heap::searchBFS(Player *player){
     std::vector<std::vector<int>> visited_position; 
@@ -13,12 +19,9 @@ void Heap::searchBFS(Player *player){
     std::vector<int> initial_position = {player->getPosition()};
     NodeGraph* reference = this->_graph.getNodeByLinearPosition(initial_position[0], initial_position[1]);
 
-    //Create root heap node
-    NodeHeap* chain_end = new NodeHeap();
-    this->_node_control.push_back(chain_end);//add ao controle de nos para ser deletado no final
-
-    //Create root only child heap node, that points to players position on graph 
-    NodeHeap* initial_node = new NodeHeap(chain_end, reference); 
+    //No raiz da arvore eh criado como posicao do jogador
+    //eh passado como noh pai um noh vazio como referencia
+    NodeHeap* initial_node = new NodeHeap(_chain_end, reference); 
 
     //Recursive search to find  path
     std::vector<NodeHeap*> result = this->startNextLayer({initial_node}, visited_position);
@@ -35,7 +38,7 @@ std::vector<NodeHeap*> Heap::startNextLayer(std::vector<NodeHeap*> last_layer, s
     std::vector<NodeHeap*> next_layer; 
 
     //Loop pela camada, buscando celula por celula
-    for(int i=0; i < last_layer.size(); i++){
+    for(int i=0; i < (int)last_layer.size(); i++){
         //Busca a posicao das celulas filhas 
         std::vector<std::vector<int>> children_positions = last_layer[i]->getChildrenPosition();    
 
@@ -43,7 +46,7 @@ std::vector<NodeHeap*> Heap::startNextLayer(std::vector<NodeHeap*> last_layer, s
         if (!children_positions.empty()){
 
             //Percorre as celulas filhas
-            for(int j=0; j < children_positions.size(); j++){
+            for(int j=0; j < (int)children_positions.size(); j++){
                 bool jump_node = false;
 
                 //Setando em variaveis a posicao do no do momento, para facilitar
@@ -52,7 +55,7 @@ std::vector<NodeHeap*> Heap::startNextLayer(std::vector<NodeHeap*> last_layer, s
 
                 //Verificando se a celula ja foi visitada
                 if(!visited_positions.empty()){
-                    for(int k=0; k<visited_positions.size(); k++){
+                    for(int k=0; k< (int)visited_positions.size(); k++){
                         if( (y == visited_positions[k][0])
                         && (x == visited_positions[k][1])){
                             jump_node = true;
@@ -63,7 +66,7 @@ std::vector<NodeHeap*> Heap::startNextLayer(std::vector<NodeHeap*> last_layer, s
 
                 //Verificando se a celula ja possui jogador
                 if(!jump_node){
-                    for(int k=0; k<this->_players_position.size(); k++){
+                    for(int k=0; k< (int)this->_players_position.size(); k++){
                         if( (y == visited_positions[k][0])
                         && (x == visited_positions[k][1])){
                             jump_node = true;
