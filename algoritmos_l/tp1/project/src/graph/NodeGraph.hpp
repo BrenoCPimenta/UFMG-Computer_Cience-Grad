@@ -9,10 +9,13 @@ class NodeGraph {
         bool _has_user = false;
         bool _is_final_position = false;
         int _value;
+        int _x_position;
+        int _y_position;
         
     public:
-        NodeGraph(int);
+        NodeGraph(int, int, int);
         int getNumberOfChildren();
+        std::vector<int> getPosition();
         int getValue();
         std::vector<NodeGraph*> getChildren();
         bool hasUser();

@@ -44,6 +44,9 @@ run: $(EXEC)
 test: $(EXEC)
 	@bash run_tests.sh $(EXEC) $(TMPOUT)
 
+valgrind_test:  ${EXEC}
+	tests/01.in | valgrind --leak-check=yes ${EXEC}
+
 
 #Limpando codigo pre-compilado e executáveis criados
 clean: # remove todos os arquivos temporarios que forem gerados pela compilacao
