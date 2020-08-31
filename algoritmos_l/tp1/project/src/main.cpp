@@ -29,12 +29,15 @@ int main(){
         }
     }
 
+    Graph graph(table_N, table_M, values); 
+
     for(int i=0; i < number_of_players; i++) {
         int m_position;
         int n_position;
         cin>>m_position>>n_position;
         Player player_temp(n_position, m_position); 
         players.push_back(player_temp);
+        graph.setPlayerOnPosition(n_position, m_position);
     }
    /*--------------------------------------------------------------------------------------------------
      *
@@ -48,7 +51,6 @@ int main(){
     */
 
 
-    Graph graph(table_N, table_M, values); 
     graph.printPositionsPossibleMoves();
 }
 

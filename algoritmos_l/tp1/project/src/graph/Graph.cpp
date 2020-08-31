@@ -4,8 +4,6 @@ using namespace std;
 
 #include <iostream> //-----------------------------------------------------------------
 
-
-
 Graph::Graph(int n, int m, std::vector<int> table):_n(n), _m(m) {
 
     this->_size = _n * _m;
@@ -66,6 +64,11 @@ Graph::Graph(int n, int m, std::vector<int> table):_n(n), _m(m) {
 NodeGraph* Graph::getNodeByLinearPosition(int y_position, int x_position){
     int position = (y_position * _m) + x_position;
     return this->_node_sequence[position];
+}
+
+void Graph::setPlayerOnPosition(int y_position, int x_position){
+    NodeGraph* node = this->getNodeByLinearPosition(y_position, x_position);
+    node->setHasUser(); 
 }
 
 void Graph::printPositionsPossibleMoves() {
