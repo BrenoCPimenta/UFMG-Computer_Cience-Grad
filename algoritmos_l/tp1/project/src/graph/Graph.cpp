@@ -66,10 +66,11 @@ NodeGraph* Graph::getNodeByLinearPosition(int y_position, int x_position){
     return this->_node_sequence[position];
 }
 
+/*------------------------------------------------------------------------------------
 void Graph::setPlayerOnPosition(int y_position, int x_position){
     NodeGraph* node = this->getNodeByLinearPosition(y_position, x_position);
     node->setHasUser(); 
-}
+}*/
 
 void Graph::printPositionsPossibleMoves() {
     for(int i=0; i<_n; i++){

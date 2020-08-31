@@ -34,18 +34,21 @@ $(TAD2).o: $(SRC)/$(GRP)/$(TAD2).cpp $(SRC)/$(GRP)/$(TAD2).hpp
 $(TAD3).o: $(SRC)/$(PLY)/$(TAD3).cpp $(SRC)/$(PLY)/$(TAD3).hpp
 	@$(CC) $(CFLAGS) -c  $(SRC)/$(PLY)/$(TAD3).cpp -o Player.o
 
+$(TAD4).o: $(SRC)/$(HEP)/$(TAD4).cpp $(SRC)/$(HEP)/$(TAD4).hpp
+	@$(CC) $(CFLAGS) -c  $(SRC)/$(HEP)/$(TAD4).cpp -o NodeHeap.o
+
+
 
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o $(TAD3).o
+main: $(TAD1).o $(TAD2).o $(TAD3).o $(TAD4).o
 
 #Gerando executavel
 $(EXEC): main
-	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(SRC)/main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o  $(TAD4).o $(SRC)/main.cpp -o $(EXEC)
 
 #Executando a main
 run: $(EXEC)
 	$(EXEC)
-
 
 #Teste com entradas e saidas. E teste de vazamento de memoria
 test: $(EXEC)

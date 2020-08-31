@@ -6,7 +6,7 @@
 class NodeGraph {
     protected:
         std::vector <NodeGraph*> _children;
-        bool _has_user = false;
+        //bool _has_user = false;
         bool _is_final_position = false;
         int _value;
         int _x_position;
@@ -18,11 +18,11 @@ class NodeGraph {
         std::vector<int> getPosition();
         int getValue();
         std::vector<NodeGraph*> getChildren();
-        bool hasUser();
+        //bool hasUser();
         bool isFinalPosition();
         void setAsFinalPosition();
         void setChildren(NodeGraph*);
-        void setHasUser();
+        //void setHasUser();
 };
 
 #endif
