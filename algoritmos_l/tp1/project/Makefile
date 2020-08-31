@@ -12,14 +12,17 @@ all: $(EXEC)
 #Caminhos reutilizaveis
 SRC=./src
 GRP=./graph
+PLY=./player
 HEP=./heap
 
 
 #Tipos abstratos de dados
 TAD1=NodeGraph
 TAD2=Graph
-TAD3=NodeHeap
-TAD4=HEAP
+TAD3=Player
+TAD4=NodeHeap
+TAD5=HEAP
+
 
 #Pre-Compilando codigo
 $(TAD1).o: $(SRC)/$(GRP)/$(TAD1).cpp $(SRC)/$(GRP)/$(TAD1).hpp
@@ -28,12 +31,16 @@ $(TAD1).o: $(SRC)/$(GRP)/$(TAD1).cpp $(SRC)/$(GRP)/$(TAD1).hpp
 $(TAD2).o: $(SRC)/$(GRP)/$(TAD2).cpp $(SRC)/$(GRP)/$(TAD2).hpp
 	@$(CC) $(CFLAGS) -c  $(SRC)/$(GRP)/$(TAD2).cpp -o Graph.o
 
+$(TAD3).o: $(SRC)/$(PLY)/$(TAD3).cpp $(SRC)/$(PLY)/$(TAD3).hpp
+	@$(CC) $(CFLAGS) -c  $(SRC)/$(PLY)/$(TAD3).cpp -o Player.o
+
+
 #Executando pre-compilacoes nas dependencias e gerando executavel
-main: $(TAD1).o $(TAD2).o
+main: $(TAD1).o $(TAD2).o $(TAD3).o
 
 #Gerando executavel
 $(EXEC): main
-	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(SRC)/main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) $(TAD1).o $(TAD2).o $(TAD3).o $(SRC)/main.cpp -o $(EXEC)
 
 #Executando a main
 run: $(EXEC)

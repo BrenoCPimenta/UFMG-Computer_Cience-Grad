@@ -1,5 +1,6 @@
 #include "graph/NodeGraph.hpp"
 #include "graph/Graph.hpp"
+#include "player/Player.hpp"
 
 #include <iostream>
 #include <vector>
@@ -14,12 +15,13 @@ int main(){
     std::vector<std::vector<int>> players_position;
     int table_N;
     int table_M;
-    int players;
+    int number_of_players;
+    std::vector<Player> players;
 
-    cin>>table_N>>table_M>>players;
+    cin>>table_N>>table_M>>number_of_players;
     
 
-    for(int n=0; n<table_N; n++) {
+    for(int n=0; n < table_N; n++) {
         for(int m=0; m<table_M; m++) {
             int temp;
             cin>>temp;
@@ -27,11 +29,12 @@ int main(){
         }
     }
 
-    for(int i=0; i<players; i++) {
+    for(int i=0; i < number_of_players; i++) {
         int m_position;
         int n_position;
         cin>>m_position>>n_position;
-        players_position.push_back({m_position, n_position});
+        Player player_temp(n_position, m_position); 
+        players.push_back(player_temp);
     }
    /*--------------------------------------------------------------------------------------------------
      *
