@@ -1,0 +1,11 @@
+Example 1:  Word ACCEPTED by the turing machine.
+Example 2:  Word REJECTED by the turing machine.
+Example 3:  Word REJECTED by the turing machine.
+Example 4:  Word ACCEPTED by the turing machine.
+Example Alternative 5:  Word ACCEPTED by the turing machine.
+Example Alternative 6:  Word ACCEPTED by the turing machine.
+Example Alternative 7:  Word ACCEPTED by the turing machine.
+Example Alternative 8:  Word ACCEPTED by the turing machine.
+Example Alternative 9:  Word REJECTED by the turing machine.
+Example Alternative 10:  Word ACCEPTED by the turing machine.
+

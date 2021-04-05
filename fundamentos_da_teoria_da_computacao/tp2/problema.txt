@@ -1,0 +1,102 @@
+UNIVERSIDADE FEDERAL DE MINAS GERAIS
+Instituto de Ciências Exatas
+Departamento de Ciência da Computação
+
+DCC129 -- Fundamentos de Teoria da Computação
+Prof. Renato Vimieiro
+
+Trabalho Prático 2 -- Máquinas de Turing
+
+Objetivos
+---------
+
+Nesse trabalho serão abordados aspectos práticos de máquinas de Turing. Especificamente,
+será abordado o conceito de Máquina de Turing Universal (MTU). Espera-se que, ao 
+implementar a MTU, o(a) aluno(a) compreenda melhor o funcionamento teórico dessa
+máquina e, dessa forma, fixar os conceitos teóricos envolvidos.
+
+Tarefas
+-------
+
+Os alunos deverão implementar um simulador de máquina de Turing universal. O simulador (MTU)
+receberá outra máquina e uma palavra de entrada para ela conforme representação descrita
+a seguir, e simulará as computações dessa máquina com sua entrada. Ao final, indicará
+se a palavra pertence ou não à linguagem da máquina simulada.
+
+A representação usada como entrada para a MTU será aquela descrita na seção 5.3 do
+livro texto. Isto é, o arquivo de entrada terá uma palavra do alfabeto {0,1} com a
+seguinte codificação:
+
+R<M,w>=R<M>000R<w>
+
+onde,
+
+R<M>=R<F>00R<t1>00R<t2>00...00R<tn>
+
+e
+
+R<F>=R<f1>0R<f2>0...0R<fk>
+
+cada R<f1> é a representação de um estado final. Os estados são representados em unário
+sendo o estado inicial representado por 1, e os demais estados em sequência até 1^|Q|.
+
+Uma transição ti δ(e,a)=[e',b,d] é representada por:
+
+R<ti>=R<e>0R<a>0R<e'>0R<b>0R<d>
+
+R<e> e R<e'> são as representações de estado como acima;
+R<a> e R<b> são as representações dos símbolos do alfabeto de fita.
+Os símbolos do alfabeto de fita são também representados em sequência, começando pelo
+marcador de início de fita < cuja representação é 1, seguida da representação do espaço 
+em branco que representado por 11, e demais símbolos até 1^|Γ|.
+R<d> é a representação da direção em que o cabeçote deve mover. A representação de
+movimentação à esquerda é 11 e à direita 1.
+
+A representação das palavras utiliza a mesma representação dos símbolos do alfabeto
+da fita referentes ao alfabeto da linguagem. Logo,
+
+R<w>=R<a1>0R<a2>0...0R<a|w|>
+
+
+As máquinas a serem simuladas serão todas MT padrão. Para fins de simulação, pode ser
+considerada um limite de 1k células para cada fita da máquina. Máquinas que avancem
+para além da última posição podem ser consideradas em loop e a simulação terminada.	
+
+O que entregar?
+---------------
+
+Devem ser entregues todos os arquivos fonte usados na implementação. Deve ser entregue
+também um arquivo com o resultado da simulação para os exemplos fornecidos junto
+com essa proposta. OS ARQUIVOS NAO DEVEM SER COMPRIMIDOS EM HIPOTESE ALGUMA. Cada arquivo
+deve ser anexado individualmente. TRABALHOS ENTREGUES COMPRIMIDOS SERAO DESCONSIDERADOS.
+
+Política de Plágio
+------------------
+
+Os alunos podem, e devem, discutir soluções sempre que necessário. Dito isso,
+há uma diferença bem grande entre implementação de soluções similares e cópia
+integral de ideias. Trabalhos copiados na íntegra ou em partes de outros alunos
+e/ou da internet serão prontamente anulados. Caso haja dois trabalhos copiados
+por alunos diferentes, ambos serão anulados.
+
+Datas
+-----
+
+Entrega Teams: 28/03/2021 às 23h59
+
+
+Política de atraso
+------------------
+
+Haverá tolerância de 30min na entrega dos trabalhos. Submissões feitas depois
+do intervalo de tolerância serão penalizados. 
+- Atraso até 29/03/2021 às 13h: 30%
+
+Não serão aceitos trabalhos entregues após as 13h do dia 29/03.
+
+
+Referências
+------------------
+
+- Notas de aula.
+- Newton Vieira. Introdução aos Fundamentos da Computação.
