@@ -1,0 +1,45 @@
+A resolução dos exercícios está no arquivo em anexo, seguem as respostas encontradas:
+
+1.  T(n) = Θ(n^2)
+
+2. T(n) = Θ(n^2 * log(n) )
+
+3. T(n) = Θ(2^n))
+
+4. T(n) = Θ(n^n  *  log(n))
+
+5. T(n) = Θ(n^2)
+
+6. T(n) = Θ(n * log^2(n) )
+
+7. Não há como aplicar o Teorema Mestre
+
+8. T(n) = Θ(n^0,51)
+
+9. Não há como aplicar o Teorema Mestre
+
+10. Não consegui solucionar
+
+11. T(n) = Θ(n^0,5)
+
+12. T(n) = Θ(  n^(log(3/2))  )
+
+13. T(n) = Θ(n)
+
+14. T(n) = Θ(n^n  *  log(n))
+
+15. T(n) = Θ( n * log(n) )
+
+16. T(n) = Θ( n * log(n) )
+
+17. T(n) = Θ( n^2   *   log(n) )
+
+18. T(n) = Θ( n ^2)
+
+19. Não há como aplicar o Teorema Mestre
+
+20. T(n) = Θ( n ^2)
+
+21. T(n) = Θ( n ^2)
+
+22. Não há como aplicar o Teorema Mestre

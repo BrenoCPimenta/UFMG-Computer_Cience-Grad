@@ -1,0 +1,44 @@
+/*
+Pseudo codigo que recebe um array 
+e retorna o subarrray continuo com 
+maior soma, pertencente ao array
+de entrada.
+*/
+
+def maximumSumSubarrayProblem (x_array):
+    n_size <- len( x_array )
+
+    //Posicoes finais do subarray com maior soma:
+    init_sub_array <- 0
+    end_sub_aray <- 0
+
+    //Futura posicao inicial a cada zero encontrado:
+    this_init <- 0
+
+    //Valores de controle:
+    max_sum <- -99999999
+    this_sum <- 0
+
+    for i in range(n_size):
+        this_sum <- this_sum + x_array[i]
+
+        if max_sum < this_sum:
+            max_sum <- this_sum
+            end_sub_array <- i
+            init_sub_array <- this_init
+
+        if this_sum < 0:
+            this_sum <- 0
+            this_init <- i + 1
+            
+    return x_array[ init_sub_array : end_sub_array ]
+
+    /*
+    Obs: Lembrando que eh um pseudo codigo, logo 
+    nao foi somado o valor um ao end_sub_array no 
+    final, como usualmente a syntaxe colon (:) requer,
+    a titulo de entendiemento. Portanto caso seja 
+    executado em uma linguagem como python eh necessario
+    adicionar antes do return a seguinte linha:
+        end_sub_array += 1
+    */

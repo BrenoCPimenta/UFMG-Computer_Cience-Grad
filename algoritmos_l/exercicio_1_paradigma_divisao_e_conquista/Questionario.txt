@@ -1,0 +1,5 @@
+Dada uma lista encadeada com n elementos, rearranje os nós em ordem aleatória, uniformemente distribuída sobre todas as permutações de n.
+
+Suposição: acesso a um gerador perfeito de números aleatórios.
+
+Requisitos: a solução deve ser escrita em pseudocódigo de alto nível, ter complexidade de tempo O(n log n) e espaço extra O(log n).
