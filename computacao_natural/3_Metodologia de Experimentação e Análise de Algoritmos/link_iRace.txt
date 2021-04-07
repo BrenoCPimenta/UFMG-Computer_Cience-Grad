@@ -1,2 +1,0 @@
-The irace package implements the iterated racing procedure, which is an extension of the Iterated F-race procedure. Its main purpose is to automatically configure optimization algorithms by finding the most appropriate settings given a set of instances of an optimization problem
-https://iridia.ulb.ac.be/irace/

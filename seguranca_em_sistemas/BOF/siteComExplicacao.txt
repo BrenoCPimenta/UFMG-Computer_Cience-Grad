@@ -1,3 +1,0 @@
-site super interessante, além de uma explicação bem clara sobre buffer overflow
-
-https://insecure.org/stf/smashstack.html
